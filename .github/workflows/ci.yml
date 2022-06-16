@@ -26,8 +26,8 @@ jobs:
       - name: Show Php Version
         run: php -v
 
-      - name: Composer Update
-        run: composer install --prefer-dist
+      - name: Composer Install
+        run: composer install --prefer-dist --ignore-platform-reqs
 
       - name: PHP Spec
         uses: php-actions/phpspec@master
