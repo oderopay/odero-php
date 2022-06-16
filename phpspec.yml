@@ -1,0 +1,4 @@
+suites:
+  odero_suite:
+    namespace: Oderopay
+    psr4_prefix: Oderopay

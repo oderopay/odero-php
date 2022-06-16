@@ -1,0 +1,27 @@
+{
+    "name": "oderopay/odero-php",
+    "description": "Oderopay PHP Sdk",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Çağrı S.",
+            "email": "hi@bencagri.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Oderopay\\": "src/"
+        },
+        "psr-0": {"": "src"}
+    },
+    "require-dev": {
+        "phpspec/phpspec": "^7.2"
+    },
+    "require": {
+        "php" : ">=7.2",
+        "ext-json" : "*",
+        "ext-curl" : "*",
+        "guzzlehttp/guzzle": "^7.4"
+    }
+}

@@ -1,0 +1,56 @@
+<?php
+declare(strict_types=1);
+
+namespace Oderopay;
+
+use GuzzleHttp\Client;
+use Oderopay\Service\Payment\PaymentService;
+use Oderopay\Service\ServiceFactory;
+
+/**
+ * Oderopay client class.
+ * @property PaymentService $payments
+ */
+class OderoClient implements OderoClientInterface
+{
+    const VERSION = '1.0.0';
+
+    /** @var ServiceFactory */
+    protected $serviceFactory;
+
+    /** @var OderoConfig */
+    public $config;
+
+    /** @var Client */
+    public $http;
+
+    public function __construct(OderoConfig $config)
+    {
+        $this->config = $config;
+
+        $http = new Client([
+            'base_uri' => $config->getApiHost(),
+            'headers' => [
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json',
+            ],
+        ]);
+
+        $this->http = $http;
+
+    }
+
+    /**
+     * @param $name
+     * @return mixed|Service\AbstractServiceFactory|null
+     */
+    public function __get($name)
+    {
+        if (null === $this->serviceFactory) {
+            $this->serviceFactory = new ServiceFactory($this);
+        }
+
+        return $this->serviceFactory->__get($name);
+    }
+
+}
