@@ -27,9 +27,7 @@ jobs:
         run: php -v
 
       - name: Composer Update
-        run: composer update --prefer-dist
-
-      - uses: php-actions/composer@master
+        run: composer install --prefer-dist
 
       - name: PHP Spec
         uses: php-actions/phpspec@master
