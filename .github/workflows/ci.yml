@@ -26,6 +26,9 @@ jobs:
       - name: Show Php Version
         run: php -v
 
+      - name: Composer Update
+        run: composer update --prefer-dist
+
       - uses: php-actions/composer@master
 
       - name: PHP Spec
