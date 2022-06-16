@@ -24,7 +24,7 @@ jobs:
           php-version: ${{ matrix.php }}
 
       - name: Show Php Version
-      - run: php -v
+        run: php -v
 
       - uses: php-actions/composer@master
 
