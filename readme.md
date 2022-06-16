@@ -1,4 +1,5 @@
 ## Oderopay PHP SDK
+[![Build Status](https://github.com/oderopay/odero-php/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/oderopay/odero-php/actions/workflows/ci.yml)
 
 The Oderopay PHP library provides convenient access to the Oderopay API from applications written in the PHP language. 
 It includes a pre-defined set of classes for API resources that initialize themselves dynamically from API responses which makes it compatible with Oderopay API.
