@@ -60,7 +60,7 @@ class Customer extends AbstractRequest
     /**
      * @return DeliveryAddress
      */
-    public function getDeliveryInformation(): DeliveryAddress
+    public function getDeliveryInformation(): ?DeliveryAddress
     {
         return $this->deliveryInformation;
     }
@@ -78,7 +78,7 @@ class Customer extends AbstractRequest
     /**
      * @return BillingAddress
      */
-    public function getBillingInformation(): BillingAddress
+    public function getBillingInformation(): ?BillingAddress
     {
         return $this->billingInformation;
     }
