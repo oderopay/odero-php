@@ -1,0 +1,8 @@
+{
+  "requestId": "uuid",
+  "message": "string",
+  "data": {
+    "paymentId": "uuid",
+    "url": "string"
+  }
+}

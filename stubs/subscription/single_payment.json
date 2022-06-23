@@ -1,0 +1,15 @@
+{
+  "merchantId": "uuid",
+  "amount": "float",
+  "paymentId": "uuid",
+  "currency": "string",
+  "type": 1,
+  "requestedAt": "datetime",
+  "recurring": true,
+  "recurringInformation": {
+    "startDate": "string",
+    "endDate": "string",
+    "timeForBillingUtc": "string",
+    "interval": "string"
+  }
+}

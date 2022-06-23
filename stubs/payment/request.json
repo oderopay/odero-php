@@ -1,0 +1,49 @@
+{
+  "merchantId": "uuid",
+  "amount": "float",
+  "currency": "string",
+  "extOrderId": "string",
+  "extOrderUrl": "string",
+  "returnUrl": "string",
+  "saveCard": "bool",
+  "recurring": "bool",
+  "recurringInformation": {
+    "startDate": "string",
+    "endDate": "string",
+    "timeForBillingUtc": "string",
+    "interval": "string"
+  },
+  "submerchants": [
+    {
+      "extId": "uuid",
+      "name": "string",
+      "amount": "float",
+      "commission": "float",
+      "products": [
+        {
+          "extId": "string",
+          "price": "float",
+          "quantity": "float",
+          "total": "float",
+          "name": "string",
+          "imageUrl": "string"
+        }
+      ]
+    }
+  ],
+  "customer": {
+    "email": "string",
+    "phoneNumber": "string",
+    "deliveryInformation": {
+      "deliveryType": "string",
+      "country": "string",
+      "city": "string",
+      "address": "string"
+    },
+    "billingInformation": {
+      "country": "string",
+      "city": "string",
+      "address": "string"
+    }
+  }
+}

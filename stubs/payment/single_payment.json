@@ -1,0 +1,10 @@
+{
+  "merchantId": "uuid",
+  "amount": "float",
+  "paymentId": "uuid",
+  "currency": "string",
+  "type": 1,
+  "requestedAt": "datetime",
+  "recurring": false,
+  "recurringInformation": null
+}

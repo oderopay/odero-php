@@ -25,21 +25,7 @@ class ServiceFactoryTest extends OderoTestCase
 
         $this->serviceFactory = new ServiceFactory($oderoClient);
 
-        $paymentSuccess = file_get_contents(__DIR__ . "/../../stubs/payment/success.json");
-
-
-        // Create a mock and queue two responses.
-        $mock = new MockHandler([
-            new Response(200, [], $paymentSuccess),
-            new Response(400, []),
-            new Response(403, []),
-            new RequestException('Error Communicating with Server', new Request('GET', 'test'))
-        ]);
-
-        $handlerStack = HandlerStack::create($mock);
-
-        $client = new Client(['base_uri' => $config->getApiHost(), 'handler' => $handlerStack]);
-        $this->http = new HttpClient($client);
+        $this->config = $config;
 
         parent::setUp();
     }
