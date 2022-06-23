@@ -33,3 +33,6 @@ jobs:
         uses: php-actions/phpspec@master
         with:
           config: phpspec.yml
+
+      - name: PHP Unit
+        run: vendor/bin/phpunit tests --exclude-group ignore
