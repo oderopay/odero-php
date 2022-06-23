@@ -7,15 +7,16 @@ trait FromArrayTrait
 {
     /**
      * @param array $data
-     * @return static
+     * @return self
      */
-    public static function fromArray(array $data = []) {
-        foreach (get_object_vars($obj = new self) as $property => $default) {
+    public function fromArray(array $data = [])
+    {
+        foreach (get_object_vars($this) as $property => $default) {
             if (!array_key_exists($property, $data)) continue;
-            $obj->{$property} = $data[$property]; // assign value to object
+            $this->{$property} = $data[$property]; // assign value to object
         }
 
-        return $obj;
+        return $this;
     }
 
 }

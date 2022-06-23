@@ -13,11 +13,10 @@ class ServiceFactorySpec extends ObjectBehavior
 {
     function let()
     {
-        $config = new OderoConfig('MY Store Name', 'merchantıd', 'token');
+        $config = new OderoConfig('MY Store Name', 'merchantId', 'token');
         $oderoClient = new OderoClient($config);
         $this->beConstructedWith($oderoClient);
         $this->shouldBeAnInstanceOf(AbstractServiceFactory::class);
-
     }
 
     function it_should_have_odero_client()

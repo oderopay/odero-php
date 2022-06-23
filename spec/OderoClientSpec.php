@@ -10,7 +10,6 @@ class OderoClientSpec extends ObjectBehavior
 {
     function it_is_initializable(OderoConfig $config)
     {
-
         $this->beConstructedWith($config);
         $this->shouldBeAnInstanceOf(OderoClientInterface::class);
     }

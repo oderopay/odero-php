@@ -5,9 +5,17 @@ namespace Oderopay\Traits;
 
 trait SerializerTrait
 {
-    public function toArray()
+    public function toArray($vars = null)
     {
-        return get_object_vars($this);
+        $vars = $vars ?? get_object_vars($this);
+
+        return array_map(function (&$key) {
+           if(is_object($key)){
+               $key = $this->toArray(get_object_vars($key));
+           }
+           return $key;
+        }, $vars);
+
     }
     public function toJSON()
     {

@@ -4,10 +4,16 @@ namespace Oderopay\Service\Payment;
 
 use Oderopay\Model\Payment\Merchant;
 use Oderopay\Model\Payment\Payment;
+use Oderopay\Response\PaymentIntentResponse;
+use Oderopay\Response\PaymentResponse;
 use Oderopay\Service\BaseService;
 
 class PaymentService extends BaseService
 {
+    /**
+     * @param Payment $payment
+     * @return PaymentIntentResponse
+     */
     public function create(Payment $payment)
     {
         if(empty($payment->getSubMerchants())){
@@ -19,6 +25,21 @@ class PaymentService extends BaseService
             $merchant->setProducts($payment->getProducts());
         }
 
-        return $payment;
+        $response = $this->request('POST','/api/payments/one-time', ['form_params' => $payment->toArray()]);
+
+        return new PaymentIntentResponse($response);
+
+    }
+
+    /**
+     * @param string $uuid
+     * @return PaymentResponse
+     */
+    public function get(string $uuid)
+    {
+        $response = $this->request('GET','/api/payments/' . $uuid);
+
+        return new PaymentResponse($response);
     }
 }
+

@@ -15,6 +15,8 @@ class OderoClient implements OderoClientInterface
 {
     const VERSION = '1.0.0';
 
+    const APP_DIR = __DIR__ .'/../';
+
     /** @var ServiceFactory */
     protected $serviceFactory;
 
@@ -27,17 +29,6 @@ class OderoClient implements OderoClientInterface
     public function __construct(OderoConfig $config)
     {
         $this->config = $config;
-
-        $http = new Client([
-            'base_uri' => $config->getApiHost(),
-            'headers' => [
-                'Accept' => 'application/json',
-                'Content-Type' => 'application/json',
-            ],
-        ]);
-
-        $this->http = $http;
-
     }
 
     /**

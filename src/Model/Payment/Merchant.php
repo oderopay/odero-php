@@ -63,6 +63,12 @@ class Merchant extends AbstractRequest
      */
     public function getAmount()
     {
+        if(!$this->amount){
+            foreach ($this->getProducts() as $product) {
+                $this->amount += $product->getTotal();
+            }
+        }
+
         return $this->amount;
     }
 
@@ -95,7 +101,7 @@ class Merchant extends AbstractRequest
     }
 
     /**
-     * @return BasketItem[]
+     * @return array<BasketItem>
      */
     public function getProducts()
     {
@@ -126,9 +132,9 @@ class Merchant extends AbstractRequest
 
     public function removeProduct(BasketItem $product)
     {
-        foreach ($this->products as $_product) {
-            if($_product === $product){
-                unset($this->products[$_product]);
+        foreach ($this->products as $k => $_product) {
+            if($_product->getExtId() === $product->getExtId()){
+                unset($this->products[$k]);
             }
         }
 

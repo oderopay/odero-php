@@ -58,6 +58,11 @@ class BasketItem extends AbstractRequest
     public function setPrice($price)
     {
         $this->price = $price;
+
+        if(!$this->total && $this->quantity){
+            $this->total = $this->quantity * $price;
+        }
+
         return $this;
     }
 
@@ -76,6 +81,11 @@ class BasketItem extends AbstractRequest
     public function setQuantity($quantity)
     {
         $this->quantity = $quantity;
+
+        if(!$this->total && $this->price){
+            $this->total = $this->price * $quantity;
+        }
+
         return $this;
     }
 
@@ -84,7 +94,7 @@ class BasketItem extends AbstractRequest
      */
     public function getTotal()
     {
-        return $this->total;
+        return $this->total ?? $this->price * $this->quantity;
     }
 
     /**
