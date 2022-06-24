@@ -9,12 +9,14 @@ trait SerializerTrait
     {
         $vars = $vars ?? get_object_vars($this);
 
-        return array_map(function (&$key) {
+        $arr =  array_map(function (&$key) {
            if(is_object($key)){
                $key = $this->toArray(get_object_vars($key));
            }
            return $key;
         }, $vars);
+
+        return array_filter($arr);
 
     }
     public function toJSON()

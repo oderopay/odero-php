@@ -29,16 +29,21 @@ class Subscription
     }
 
     /**
+     * Output of given date should be ISO8601 format
      * @param string $startDate
      * @return Subscription
      */
     public function setStartDate(string $startDate): Subscription
     {
-        $this->startDate = $startDate;
+        $this->startDate = \DateTime::createFromFormat('Y-m-d h:i:s', $startDate)
+            ->setTimezone('UTC')
+            ->format(\DateTime::ATOM);
+
         return $this;
     }
 
     /**
+     * Output is ISO8601 format
      * @return string
      */
     public function getEndDate(): string
@@ -47,12 +52,16 @@ class Subscription
     }
 
     /**
+     * Output of given date should be ISO8601 format
      * @param string $endDate
      * @return Subscription
      */
     public function setEndDate(string $endDate): Subscription
     {
-        $this->endDate = $endDate;
+        $this->endDate = \DateTime::createFromFormat('Y-m-d h:i:s', $endDate)
+            ->setTimezone('UTC')
+            ->format(\DateTime::ATOM);
+
         return $this;
     }
 

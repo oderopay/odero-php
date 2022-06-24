@@ -9,5 +9,4 @@ use Oderopay\Traits\SerializerTrait;
 abstract class AbstractRequest
 {
     use SerializerTrait, FromArrayTrait;
-
 }
