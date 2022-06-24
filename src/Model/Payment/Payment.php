@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Oderopay\Model\Payment;
 
 use Oderopay\Model\AbstractRequest;
+use Oderopay\Model\Subscription\Subscription;
 
 class Payment extends AbstractRequest
 {
@@ -33,6 +34,12 @@ class Payment extends AbstractRequest
 
     /** @var array<BasketItem> */
     protected $products;
+
+    /** @var bool  */
+    protected $recurring = false;
+
+    /** @var null|Subscription */
+    protected $recurringInformation = null;
 
     public function __construct()
     {
@@ -199,5 +206,35 @@ class Payment extends AbstractRequest
         $this->customer = $customer;
         return $this;
     }
+
+    /**
+     * @return bool
+     */
+    public function isRecurring(): bool
+    {
+        $this->recurring = $this->getRecurringInformation() instanceof Subscription;
+
+        return $this->recurring;
+    }
+
+
+    /**
+     * @return Subscription|null
+     */
+    public function getRecurringInformation(): ?Subscription
+    {
+        return $this->recurringInformation;
+    }
+
+    /**
+     * @param Subscription|null $subscription
+     * @return Payment
+     */
+    public function setSubscription(?Subscription $subscription): Payment
+    {
+        $this->recurringInformation = $subscription;
+        return $this;
+    }
+
 
 }

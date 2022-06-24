@@ -3,10 +3,14 @@ declare(strict_types=1);
 
 namespace Oderopay\Model\Subscription;
 
-use Oderopay\Model\Payment\Payment;
+use InvalidArgumentException;
 
 class Subscription
 {
+
+    const INTERVAL = [
+        'Weekly', 'Monthly', 'Yearly'
+    ];
 
     /** @var string */
     protected $startDate;
@@ -35,9 +39,11 @@ class Subscription
      */
     public function setStartDate(string $startDate): Subscription
     {
-        $this->startDate = \DateTime::createFromFormat('Y-m-d h:i:s', $startDate)
-            ->setTimezone('UTC')
-            ->format(\DateTime::ATOM);
+        $date = \DateTime::createFromFormat('Y-m-d h:i:s', $startDate, new \DateTimeZone('UTC'));
+
+        if(!$date) throw new InvalidArgumentException('startDate format should be "Y-m-d h:i:s"');
+
+        $this->startDate = $date->format(\DateTime::ISO8601);
 
         return $this;
     }
@@ -58,47 +64,94 @@ class Subscription
      */
     public function setEndDate(string $endDate): Subscription
     {
-        $this->endDate = \DateTime::createFromFormat('Y-m-d h:i:s', $endDate)
-            ->setTimezone('UTC')
-            ->format(\DateTime::ATOM);
+        $date = \DateTime::createFromFormat('Y-m-d h:i:s', $endDate, new \DateTimeZone('UTC'));
+
+        if(!$date) throw new InvalidArgumentException('endDate format should be "Y-m-d h:i:s"');
+
+        $this->endDate = $date->format(\DateTime::ISO8601);
 
         return $this;
     }
 
     /**
+     * Hour and minute for billing
      * @return string
      */
     public function getTimeForBillingUtc(): string
     {
-        return $this->timeForBillingUtc;
+        return $this->timeForBillingUtc ?? '00:00';
     }
 
     /**
+     * Hour and minute
      * @param string $timeForBillingUtc
      * @return Subscription
      */
     public function setTimeForBillingUtc(string $timeForBillingUtc): Subscription
     {
-        $this->timeForBillingUtc = $timeForBillingUtc;
+        $time = \DateTime::createFromFormat('H:i', $timeForBillingUtc);
+
+        if(!$time) throw new InvalidArgumentException('timeForBilling format should be "H:i"');
+
+        $this->timeForBillingUtc = $time->format('H:i');
+
         return $this;
     }
 
     /**
+     * Gets the interval
+     * Default Monthly
      * @return string
      */
     public function getInterval(): string
     {
-        return $this->interval;
+        return $this->interval ?? 'Monthly';
     }
 
     /**
+     * Could be Weekly, Monthly, Yearly
+     * Default Monthly
      * @param string $interval
      * @return Subscription
      */
     public function setInterval(string $interval): Subscription
     {
+        if(!in_array($interval, self::INTERVAL)){
+            $interval = 'Monthly';
+        }
+
         $this->interval = $interval;
         return $this;
     }
 
+    /**
+     * Sets the interval as weekly
+     * @return $this
+     */
+    public function weekly()
+    {
+        $this->setInterval('Weekly');
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function monthly()
+    {
+        $this->setInterval('Monthly');
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function yearly()
+    {
+        $this->setInterval('Yearly');
+
+        return $this;
+    }
 }

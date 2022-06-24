@@ -29,7 +29,10 @@ class PaymentResponse extends BaseResponse
     public $requestedAt;
 
     /** @var bool */
-    public $recurring;
+    public $recurring = false;
+
+    /** @var  */
+    public $status;
 
     /** @var array */
     public $recurringInformation;
