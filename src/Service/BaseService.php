@@ -28,12 +28,12 @@ class BaseService
     }
 
     /**
-     * @param $body
+     * @param array $body
      * @param $merchantId
      * @param $merchantToken
      * @return string
      */
-    public function generateMerchantSignature($body, $merchantId, $merchantToken): string
+    public function generateMerchantSignature(array $body, $merchantId, $merchantToken): string
     {
         $merchantSignatureHeader = hash("sha256", $merchantId . json_encode($body) . $merchantToken);
         return sprintf('%s|%s', $merchantId, $merchantSignatureHeader);
@@ -47,16 +47,9 @@ class BaseService
      */
     public function request(string $method = 'POST', string $uri = '', array $options = [])
     {
-        $_options = [
-            'form_params' => []
-        ];
-
-        if(isset($options['form_params'])){
-            $_options['form_params'] = array_merge($_options['form_params'], $options['form_params']);
-        }
 
         $merchantSignatureHeader = $this->generateMerchantSignature(
-            $_options['form_params'],
+            $options['form_params'],
             $this->client->config->getMerchantId(),
             $this->client->config->getMerchantToken()
         );
