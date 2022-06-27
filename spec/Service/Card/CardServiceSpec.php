@@ -12,6 +12,7 @@ use Oderopay\Http\HttpClient;
 use Oderopay\Model\Card\SaveCard;
 use Oderopay\OderoClient;
 use Oderopay\OderoConfig;
+use Oderopay\Response\CardDeleteResponse;
 use Oderopay\Response\CardSaveResponse;
 use Oderopay\Response\PaymentIntentResponse;
 use Oderopay\Service\BaseService;

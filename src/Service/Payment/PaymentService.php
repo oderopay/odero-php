@@ -37,7 +37,7 @@ class PaymentService extends BaseService
      * @param string $uuid
      * @return PaymentResponse
      */
-    public function get(string $uuid)
+    public function get(string $uuid): PaymentResponse
     {
         $response = $this->request('GET','/api/payments/' . $uuid);
 

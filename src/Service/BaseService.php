@@ -49,7 +49,7 @@ class BaseService
     {
 
         $merchantSignatureHeader = $this->generateMerchantSignature(
-            $options['form_params'],
+            $options['form_params'] ?? [],
             $this->client->config->getMerchantId(),
             $this->client->config->getMerchantToken()
         );
