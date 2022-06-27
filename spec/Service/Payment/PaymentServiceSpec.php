@@ -18,7 +18,7 @@ use PhpSpec\ObjectBehavior;
 
 class PaymentServiceSpec extends ObjectBehavior
 {
-    function let(HttpClient $client)
+    function let()
     {
         $config = new OderoConfig('MY Store Name', 'merchantId', 'token');
         $oderoClient = new OderoClient($config);

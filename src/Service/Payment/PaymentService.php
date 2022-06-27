@@ -16,6 +16,8 @@ class PaymentService extends BaseService
      */
     public function create(Payment $payment)
     {
+        $payment->setMerchantId($this->client->config->getMerchantId());
+
         if(empty($payment->getSubMerchants())){
             $merchant = new Merchant();
             $merchant->setAmount(1); // total amount of products

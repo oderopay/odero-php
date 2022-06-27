@@ -1,0 +1,20 @@
+{
+  "merchantId": "uuid",
+  "returnUrl": "string",
+  "currency": "string",
+  "customer": {
+    "email": "string",
+    "phoneNumber": "string",
+    "deliveryInformation": {
+      "deliveryType": "string",
+      "country": "string",
+      "city": "string",
+      "address": "string"
+    },
+    "billingInformation": {
+      "country": "string",
+      "city": "string",
+      "address": "string"
+    }
+  }
+}

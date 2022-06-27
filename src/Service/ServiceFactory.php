@@ -2,11 +2,13 @@
 
 namespace Oderopay\Service;
 
+use Oderopay\Service\Card\CardService;
 use Oderopay\Service\Payment\PaymentService;
 
 /**
  * Service factory class.
  * @property PaymentService $payments
+ * @property CardService $cards
  */
 class ServiceFactory extends AbstractServiceFactory
 {
@@ -15,6 +17,7 @@ class ServiceFactory extends AbstractServiceFactory
      */
     private static $classMap = [
         'payments' => PaymentService::class,
+        'cards' => CardService::class
     ];
 
     public function getServiceClass($name)
