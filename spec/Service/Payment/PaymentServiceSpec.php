@@ -9,10 +9,10 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Oderopay\Http\HttpClient;
+use Oderopay\Http\Response\PaymentIntentResponse;
 use Oderopay\Model\Payment\Payment;
 use Oderopay\OderoClient;
 use Oderopay\OderoConfig;
-use Oderopay\Response\PaymentIntentResponse;
 use Oderopay\Service\BaseService;
 use PhpSpec\ObjectBehavior;
 

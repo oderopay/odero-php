@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Oderopay\Response;
+namespace Oderopay\Http\Response;
 
 use Psr\Http\Message\ResponseInterface;
 

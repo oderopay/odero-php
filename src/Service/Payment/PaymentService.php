@@ -2,10 +2,10 @@
 
 namespace Oderopay\Service\Payment;
 
+use Oderopay\Http\Response\PaymentIntentResponse;
+use Oderopay\Http\Response\PaymentResponse;
 use Oderopay\Model\Payment\Merchant;
 use Oderopay\Model\Payment\Payment;
-use Oderopay\Response\PaymentIntentResponse;
-use Oderopay\Response\PaymentResponse;
 use Oderopay\Service\BaseService;
 
 class PaymentService extends BaseService

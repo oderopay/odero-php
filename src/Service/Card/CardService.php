@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace Oderopay\Service\Card;
 
+use Oderopay\Http\Response\CardDeleteResponse;
+use Oderopay\Http\Response\CardSaveResponse;
 use Oderopay\Model\Card\SaveCard;
-use Oderopay\Response\CardDeleteResponse;
-use Oderopay\Response\CardSaveResponse;
 use Oderopay\Service\BaseService;
 
 class CardService extends BaseService
@@ -13,7 +13,7 @@ class CardService extends BaseService
 
     /**
      * @param SaveCard $card
-     * @return CardSaveResponse
+     * @return \Oderopay\Http\Response\CardSaveResponse
      */
     public function create(SaveCard $card) : CardSaveResponse
     {

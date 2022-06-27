@@ -10,9 +10,9 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Oderopay\Http\HttpClient;
+use Oderopay\Http\Response\PaymentIntentResponse;
+use Oderopay\Http\Response\PaymentResponse;
 use Oderopay\Model\Payment\Payment;
-use Oderopay\Response\PaymentIntentResponse;
-use Oderopay\Response\PaymentResponse;
 use Oderopay\Service\Payment\PaymentService;
 use Tests\Service\ServiceFactoryTest;
 
