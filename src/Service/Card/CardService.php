@@ -19,7 +19,7 @@ class CardService extends BaseService
     {
         $card->setMerchantId($this->client->config->getMerchantId());
 
-        $response = $this->request('POST','/api/cards', ['form_params' => $card->toArray()]);
+        $response = $this->request('POST','api/cards', ['form_params' => $card->toArray()]);
 
         return new CardSaveResponse($response);
     }
@@ -30,7 +30,7 @@ class CardService extends BaseService
      */
     public function delete($cardToken): CardDeleteResponse
     {
-        $response = $this->request('DELETE','/api/cards/' . $cardToken);
+        $response = $this->request('DELETE','api/cards/' . $cardToken);
 
         return new CardDeleteResponse($response);
     }

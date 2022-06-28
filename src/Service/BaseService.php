@@ -8,6 +8,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Psr7\Response;
 use Oderopay\Http\HttpClient;
+use Oderopay\Http\HttpResponse;
 use Oderopay\OderoClient;
 
 class BaseService
@@ -43,11 +44,10 @@ class BaseService
      * @param string $method
      * @param string $uri
      * @param array $options
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return HttpResponse
      */
     public function request(string $method = 'POST', string $uri = '', array $options = [])
     {
-
         $merchantSignatureHeader = $this->generateMerchantSignature(
             $options['form_params'] ?? [],
             $this->client->config->getMerchantId(),
@@ -60,18 +60,20 @@ class BaseService
             'accept' => 'application/json',
         ];
 
-        if(isset($options['headers'])){
-            $_options['headers'] = array_merge($_options['headers'], $options['headers']);
-        }
+        $options['headers'] = array_merge($options['headers'] ?? [], $_options['headers']);
 
         $uri = sprintf('%s/%s', $this->client->config->getApiHost(), $uri);
 
         try {
-            $response = $this->http->request($method, $uri, $_options);
-
+            $message = $this->http->request($method, $uri, $options);
+            $response = new HttpResponse();
+            $response->code = $message->getStatusCode();
+            $response->content = $message->getBody()->getContents();
         }catch (GuzzleException $e ){
-            $response = new Response();
-            $response->withStatus($e->getCode());
+            $response = new HttpResponse();
+            $error =  json_decode($e->getResponse()->getBody()->getContents(), true);
+            $response->message = $error['message'] ?? $e->getMessage();
+            $response->code = $e->getCode();
         }
 
         return $response;

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Oderopay\Http\Response;
 
+use Oderopay\Http\HttpResponse;
 use Oderopay\Traits\FromArrayTrait;
 use Psr\Http\Message\ResponseInterface;
 
@@ -25,16 +26,20 @@ class BaseResponse
     protected $response;
 
     /**
-     * @param ResponseInterface $response
+     * @param HttpResponse $response
      */
-    public function __construct(ResponseInterface $response)
+    public function __construct(HttpResponse $response)
     {
-        $this->response = $response;
-        $this->status = $response->getStatusCode();
-        $this->contents = $response->getBody()->getContents();
+        $this->status = $response->code;
+        $this->contents = $response->content;
 
-        $contents = json_decode($this->contents, true);
-        $this->fromArray($contents);
+        if($response->content){
+            $contents = json_decode($this->contents, true);
+            $this->fromArray($contents);
+        }else{
+            $this->success = false;
+            $this->message = $response->message;
+        }
     }
 
     /**
