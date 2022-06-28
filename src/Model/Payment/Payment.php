@@ -33,7 +33,7 @@ class Payment extends AbstractRequest
     protected $saveCard;
 
     /** @var array<Merchant> */
-    protected $subMerchants = [];
+    protected $submerchants = [];
 
     /** @var Customer */
     protected $customer;
@@ -49,7 +49,7 @@ class Payment extends AbstractRequest
 
     public function __construct()
     {
-        $this->subMerchants = [];
+        $this->submerchants = [];
     }
     /**
      * @return array<BasketItem>
@@ -90,7 +90,7 @@ class Payment extends AbstractRequest
     /**
      * @return float
      */
-    public function getAmount(): float
+    public function getAmount(): ?float
     {
         return $this->amount;
     }
@@ -200,7 +200,7 @@ class Payment extends AbstractRequest
      */
     public function getSubMerchants() : ?array
     {
-        return $this->subMerchants;
+        return $this->submerchants;
     }
 
     /**
@@ -209,7 +209,7 @@ class Payment extends AbstractRequest
      */
     public function setSubMerchants(array $subMerchants): Payment
     {
-        $this->subMerchants = $subMerchants;
+        $this->submerchants = $subMerchants;
         return $this;
     }
 
