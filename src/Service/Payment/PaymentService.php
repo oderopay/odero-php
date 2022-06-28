@@ -39,7 +39,12 @@ class PaymentService extends BaseService
             $payment->setAmount($total ?? 0);
         }
 
-        $response = $this->request('POST','/api/payments/one-time', ['form_params' => $payment->toArray()]);
+        $uri = 'api/payments/one-time';
+        if($payment->getCardToken()){
+            $uri = 'api/payments/stored-card';
+        }
+
+        $response = $this->request('POST', $uri, ['form_params' => $payment->toArray()]);
 
         return new PaymentIntentResponse($response);
 
@@ -51,7 +56,7 @@ class PaymentService extends BaseService
      */
     public function get(string $uuid): PaymentResponse
     {
-        $response = $this->request('GET','/api/payments/' . $uuid);
+        $response = $this->request('GET','api/payments/' . $uuid);
 
         return new PaymentResponse($response);
     }
