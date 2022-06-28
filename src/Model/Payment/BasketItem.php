@@ -139,7 +139,7 @@ class BasketItem extends AbstractRequest
      */
     public function setImageUrl($imageUrl)
     {
-        $this->imageUrl = $imageUrl;
+        $this->imageUrl = base64_encode($imageUrl);
         return $this;
     }
 

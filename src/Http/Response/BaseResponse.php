@@ -34,10 +34,9 @@ class BaseResponse
     public function __construct(HttpResponse $response)
     {
         $this->status = $response->code;
-        $this->contents = $response->content;
 
         if($response->content){
-            $contents = json_decode($this->contents, true);
+            $contents = json_decode($response->content, true);
             $this->fromArray($contents);
         }else{
             $this->success = false;
