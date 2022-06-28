@@ -5,17 +5,15 @@ namespace Oderopay\Http\Response;
 
 use Oderopay\Http\HttpResponse;
 use Oderopay\Traits\FromArrayTrait;
+use Oderopay\Traits\SerializerTrait;
 use Psr\Http\Message\ResponseInterface;
 
 class BaseResponse
 {
-    use FromArrayTrait;
+    use FromArrayTrait, SerializerTrait;
 
     /** @var int  */
     protected $status;
-
-    /** @var string  */
-    protected $contents;
 
     /** @var bool */
     protected $success;
@@ -50,19 +48,6 @@ class BaseResponse
     public function getStatus()
     {
         return $this->status;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getContents()
-    {
-        return $this->contents;
-    }
-
-    public function toArray()
-    {
-        return json_decode($this->getContents(), true);
     }
 
     /**

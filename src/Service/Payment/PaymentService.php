@@ -36,7 +36,7 @@ class PaymentService extends BaseService
         }
 
         if(!$payment->getAmount()){
-            $payment->setAmount($total);
+            $payment->setAmount($total ?? 0);
         }
 
         $response = $this->request('POST','/api/payments/one-time', ['form_params' => $payment->toArray()]);

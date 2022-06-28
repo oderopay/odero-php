@@ -54,9 +54,9 @@ class Payment extends AbstractRequest
     /**
      * @return array<BasketItem>
      */
-    public function getProducts()
+    public function getProducts(): array
     {
-        return $this->products;
+        return $this->products ?? [];
     }
 
     /**
