@@ -11,7 +11,7 @@ class Payment extends AbstractRequest
     /** @var string */
     protected $merchantId;
 
-    /** @var null string */
+    /** @var null|string */
     protected $cardToken = null;
 
     /** @var float */
@@ -269,10 +269,10 @@ class Payment extends AbstractRequest
     }
 
     /**
-     * @param null $cardToken
+     * @param string|null $cardToken
      * @return Payment
      */
-    public function setCardToken($cardToken): Payment
+    public function setCardToken(?string $cardToken): Payment
     {
         $this->cardToken = $cardToken;
         return $this;

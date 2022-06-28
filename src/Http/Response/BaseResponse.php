@@ -25,6 +25,9 @@ class BaseResponse
      */
     protected $response;
 
+    /** @var string */
+    protected $message;
+
     /**
      * @param HttpResponse $response
      */

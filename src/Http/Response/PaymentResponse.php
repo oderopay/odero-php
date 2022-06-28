@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Oderopay\Http\Response;
 
+use Oderopay\Http\HttpResponse;
 use Psr\Http\Message\ResponseInterface;
 
 class PaymentResponse extends BaseResponse
@@ -37,7 +38,7 @@ class PaymentResponse extends BaseResponse
     /** @var array */
     public $recurringInformation;
 
-    public function __construct(ResponseInterface $response)
+    public function __construct(HttpResponse $response)
     {
         parent::__construct($response);
 
