@@ -44,7 +44,9 @@ class PaymentService extends BaseService
             $uri = 'api/payments/stored-card';
         }
 
-        $response = $this->request('POST', $uri, ['form_params' => $payment->toArray()]);
+        $payload = $payment->toArray(); unset($payload['products']);
+
+        $response = $this->request('POST', $uri, ['form_params' => $payload]);
 
         return new PaymentIntentResponse($response);
 

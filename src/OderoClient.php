@@ -6,12 +6,14 @@ namespace Oderopay;
 use GuzzleHttp\Client;
 use Oderopay\Service\Card\CardService;
 use Oderopay\Service\Payment\PaymentService;
+use Oderopay\Service\Payment\SubscriptionService;
 use Oderopay\Service\ServiceFactory;
 
 /**
  * Oderopay client class.
  * @property PaymentService $payments
  * @property CardService $cards
+ * @property SubscriptionService $subscriptions
  */
 class OderoClient implements OderoClientInterface
 {

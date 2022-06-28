@@ -23,7 +23,7 @@ class HttpClient
      */
     public function request($method = 'POST', $uri = '', $options = [])
     {
-        $options['json'] = $options['form_params'] ?? [];
+        $options['json'] = $options['form_params'] ?? []; unset($options['form_params']);
         return $this->client->request($method, $uri, $options);
     }
 }

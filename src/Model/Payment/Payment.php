@@ -236,7 +236,7 @@ class Payment extends AbstractRequest
      */
     public function isRecurring(): bool
     {
-        $this->recurring = $this->getRecurringInformation() instanceof Subscription;
+        $this->recurring = $this->getSubscription() instanceof Subscription;
 
         return $this->recurring;
     }
@@ -245,18 +245,19 @@ class Payment extends AbstractRequest
     /**
      * @return Subscription|null
      */
-    public function getRecurringInformation(): ?Subscription
+    public function getSubscription(): ?Subscription
     {
         return $this->recurringInformation;
     }
 
     /**
-     * @param Subscription|null $subscription
+     * @param Subscription $subscription
      * @return Payment
      */
-    public function setSubscription(?Subscription $subscription): Payment
+    public function setSubscription(Subscription $subscription): Payment
     {
         $this->recurringInformation = $subscription;
+
         return $this;
     }
 
@@ -275,6 +276,16 @@ class Payment extends AbstractRequest
     public function setCardToken(?string $cardToken): Payment
     {
         $this->cardToken = $cardToken;
+        return $this;
+    }
+
+    /**
+     * @param bool $recurring
+     * @return Payment
+     */
+    public function setRecurring(bool $recurring): Payment
+    {
+        $this->recurring = $recurring;
         return $this;
     }
 }

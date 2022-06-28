@@ -8,6 +8,7 @@ use Oderopay\OderoConfig;
 use Oderopay\Service\AbstractServiceFactory;
 use Oderopay\Service\Card\CardService;
 use Oderopay\Service\Payment\PaymentService;
+use Oderopay\Service\Payment\SubscriptionService;
 use PhpSpec\ObjectBehavior;
 
 class ServiceFactorySpec extends ObjectBehavior
@@ -29,7 +30,11 @@ class ServiceFactorySpec extends ObjectBehavior
         $this->getServiceClass('payments')->shouldBe(PaymentService::class);
     }
 
-    function it_should_have_cad_service_class(){
+    function it_should_have_card_service_class(){
         $this->getServiceClass('cards')->shouldBe(CardService::class);
+    }
+
+    function it_should_have_subscription_service_class(){
+        $this->getServiceClass('subscriptions')->shouldBe(SubscriptionService::class);
     }
 }

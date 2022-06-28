@@ -5,10 +5,12 @@ namespace Oderopay\Http;
 
 class HttpResponse
 {
-
+    /** @var int */
     public $code;
 
+    /** @var string */
     public $content;
 
+    /** @var string */
     public $message;
 }

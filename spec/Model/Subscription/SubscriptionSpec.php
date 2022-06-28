@@ -21,8 +21,8 @@ class SubscriptionSpec extends ObjectBehavior
             ->weekly()
         ;
 
-        $this->getStartDate()->shouldReturn('2020-01-01T00:00:00+0000');
-        $this->getEndDate()->shouldReturn('2021-01-01T00:00:00+0000');
+        $this->getStartDate()->shouldReturn('2020-01-01T00:00:00+00:00');
+        $this->getEndDate()->shouldReturn('2021-01-01T00:00:00+00:00');
         $this->getInterval()->shouldReturn('Weekly');
 
         $this->monthly();

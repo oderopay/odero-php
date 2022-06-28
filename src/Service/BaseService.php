@@ -5,8 +5,6 @@ namespace Oderopay\Service;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
-use GuzzleHttp\Exception\ServerException;
-use GuzzleHttp\Psr7\Response;
 use Oderopay\Http\HttpClient;
 use Oderopay\Http\HttpResponse;
 use Oderopay\OderoClient;
@@ -66,6 +64,7 @@ class BaseService
 
         try {
             $message = $this->http->request($method, $uri, $options);
+
             $response = new HttpResponse();
             $response->code = $message->getStatusCode();
             $response->content = $message->getBody()->getContents();

@@ -9,9 +9,9 @@ trait SerializerTrait
     {
         $vars = $vars ?? get_object_vars($this);
 
-        foreach ($vars as &$keys) {
-            if(is_object($keys)) $keys = $this->toArray(get_object_vars($keys));
-            if(is_array($keys)) $keys = $this->toArray($keys);
+        foreach ($vars as &$key) {
+            if(is_array($key)) $key = $this->toArray($key);
+            if(is_object($key)) $key = $this->toArray(get_object_vars($key));
         }
 
         return array_filter($vars);

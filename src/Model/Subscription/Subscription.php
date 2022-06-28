@@ -4,8 +4,9 @@ declare(strict_types=1);
 namespace Oderopay\Model\Subscription;
 
 use InvalidArgumentException;
+use Oderopay\Model\AbstractRequest;
 
-class Subscription
+class Subscription extends AbstractRequest
 {
 
     const INTERVAL = [
@@ -19,7 +20,7 @@ class Subscription
     protected $endDate;
 
     /** @var string */
-    protected $timeForBillingUtc;
+    protected $timeForBillingUtc = '00:00';
 
     /** @var string */
     protected $interval;
@@ -39,11 +40,11 @@ class Subscription
      */
     public function setStartDate(string $startDate): Subscription
     {
-        $date = \DateTime::createFromFormat('Y-m-d h:i:s', $startDate, new \DateTimeZone('UTC'));
+        $date = \DateTime::createFromFormat('Y-m-d H:i:s', $startDate, new \DateTimeZone('UTC'));
 
-        if(!$date) throw new InvalidArgumentException('startDate format should be "Y-m-d h:i:s"');
+        if(!$date) throw new InvalidArgumentException('startDate format should be "Y-m-d H:i:s"');
 
-        $this->startDate = $date->format(\DateTime::ISO8601);
+        $this->startDate = $date->format(\DateTime::ATOM);
 
         return $this;
     }
@@ -64,11 +65,11 @@ class Subscription
      */
     public function setEndDate(string $endDate): Subscription
     {
-        $date = \DateTime::createFromFormat('Y-m-d h:i:s', $endDate, new \DateTimeZone('UTC'));
+        $date = \DateTime::createFromFormat('Y-m-d H:i:s', $endDate, new \DateTimeZone('UTC'));
 
-        if(!$date) throw new InvalidArgumentException('endDate format should be "Y-m-d h:i:s"');
+        if(!$date) throw new InvalidArgumentException('endDate format should be "Y-m-d H:i:s"');
 
-        $this->endDate = $date->format(\DateTime::ISO8601);
+        $this->endDate = $date->format(\DateTime::ATOM);
 
         return $this;
     }
@@ -79,7 +80,7 @@ class Subscription
      */
     public function getTimeForBillingUtc(): string
     {
-        return $this->timeForBillingUtc ?? '00:00';
+        return $this->timeForBillingUtc;
     }
 
     /**
