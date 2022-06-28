@@ -15,14 +15,10 @@
         },
         "psr-0": {"": "src"}
     },
-    "autoload-dev": {
-        "psr-4": {"Tests\\": "tests/" }
-    },
     "require-dev": {
         "phpspec/phpspec": "^6.3",
         "symfony/var-dumper": "^5.4",
-        "phpspec/prophecy": "^1.15",
-        "phpunit/phpunit": "^9.5"
+        "phpspec/prophecy": "^1.15"
     },
     "require": {
         "php" : ">=7.2",
