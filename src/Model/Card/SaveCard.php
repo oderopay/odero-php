@@ -29,7 +29,7 @@ class SaveCard extends AbstractRequest
      * @param mixed $merchantId
      * @return SaveCard
      */
-    public function setMerchantId($merchantId)
+    public function setMerchantId($merchantId): SaveCard
     {
         $this->merchantId = $merchantId;
         return $this;
@@ -47,9 +47,9 @@ class SaveCard extends AbstractRequest
      * @param mixed $returnUrl
      * @return SaveCard
      */
-    public function setReturnUrl($returnUrl)
+    public function setReturnUrl($returnUrl): SaveCard
     {
-        $this->returnUrl = $returnUrl;
+        $this->returnUrl = base64_encode($returnUrl);
         return $this;
     }
 

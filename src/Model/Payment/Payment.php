@@ -26,6 +26,9 @@ class Payment extends AbstractRequest
     /** @var string */
     protected $extOrderUrl;
 
+    /** @var string */
+    protected $returnUrl;
+
     /** @var bool */
     protected $saveCard;
 
@@ -152,7 +155,25 @@ class Payment extends AbstractRequest
      */
     public function setExtOrderUrl(string $extOrderUrl): Payment
     {
-        $this->extOrderUrl = $extOrderUrl;
+        $this->extOrderUrl = base64_encode($extOrderUrl);
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReturnUrl(): string
+    {
+        return $this->returnUrl;
+    }
+
+    /**
+     * @param string $returnUrl
+     * @return Payment
+     */
+    public function setReturnUrl(string $returnUrl): Payment
+    {
+        $this->returnUrl = base64_encode($returnUrl);
         return $this;
     }
 
