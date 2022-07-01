@@ -2,6 +2,7 @@
 
 namespace Oderopay\Service\Payment;
 
+use Oderopay\Http\Response\PaymentResponse;
 use Oderopay\Model\Payment\Payment;
 
 class SubscriptionService extends PaymentService
@@ -16,5 +17,27 @@ class SubscriptionService extends PaymentService
         }
 
         return parent::create($payment);
+    }
+
+    /**
+     * @param $paymentId
+     * @return PaymentResponse
+     */
+    public function retry($paymentId): PaymentResponse
+    {
+        $response = $this->request('GET','api/payments/' . $paymentId . '/recurring/retry');
+
+        return new PaymentResponse($response);
+    }
+
+    /**
+     * @param $paymentId
+     * @return PaymentResponse
+     */
+    public function cancel($paymentId): PaymentResponse
+    {
+        $response = $this->request('GET','api/payments/' . $paymentId . '/recurring/cancel');
+
+        return new PaymentResponse($response);
     }
 }
