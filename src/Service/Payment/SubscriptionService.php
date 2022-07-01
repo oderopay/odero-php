@@ -25,7 +25,9 @@ class SubscriptionService extends PaymentService
      */
     public function retry($paymentId): PaymentResponse
     {
-        $response = $this->request('GET','api/payments/' . $paymentId . '/recurring/retry');
+        $body = ['form_params' => ['merchantId' => $this->client->config->getMerchantId()]];
+
+        $response = $this->request('POST','api/payments/' . $paymentId . '/recurring/retry', $body);
 
         return new PaymentResponse($response);
     }
@@ -36,7 +38,9 @@ class SubscriptionService extends PaymentService
      */
     public function cancel($paymentId): PaymentResponse
     {
-        $response = $this->request('GET','api/payments/' . $paymentId . '/recurring/cancel');
+        $body = ['form_params' => ['merchantId' => $this->client->config->getMerchantId()]];
+
+        $response = $this->request('POST','api/payments/' . $paymentId . '/recurring/cancel', $body);
 
         return new PaymentResponse($response);
     }
