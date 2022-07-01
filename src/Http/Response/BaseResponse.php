@@ -12,26 +12,29 @@ class BaseResponse
 {
     use FromArrayTrait, SerializerTrait;
 
+    /** @var int */
+    public $code;
+
     /** @var int  */
-    protected $status;
+    public $status;
 
     /** @var bool */
-    protected $success;
+    public $success;
 
     /**
      * @var ResponseInterface
      */
-    protected $response;
+    public $response;
 
     /** @var string */
-    protected $message;
+    public $message;
 
     /**
      * @param HttpResponse $response
      */
     public function __construct(HttpResponse $response)
     {
-        $this->status = $response->code;
+        $this->code = $response->code;
 
         if($response->content){
             $contents = json_decode($response->content, true);
@@ -55,6 +58,6 @@ class BaseResponse
      */
     public function isSuccess(): bool
     {
-        return $this->status == 200;
+        return $this->code == 200;
     }
 }

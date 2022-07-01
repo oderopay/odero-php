@@ -59,5 +59,5 @@ if($payment->isSuccess()){
     dump($payment);
     //redirect to $payment->data['url'];
 }else{
-    log($payment->message);
+    echo $payment->message;
 }

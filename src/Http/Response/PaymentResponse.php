@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace Oderopay\Http\Response;
 
 use Oderopay\Http\HttpResponse;
-use Psr\Http\Message\ResponseInterface;
 
 class PaymentResponse extends BaseResponse
 {
