@@ -56,9 +56,9 @@ class CardServiceSpec extends ObjectBehavior
         $card = new SaveCard();
         $saveCard = $this->create($card);
         $saveCard->shouldReturnAnInstanceOf(CardSaveResponse::class);
-        $saveCard->getStatus()->shouldReturn(200);
+        $saveCard->getCode()->shouldReturn(200);
         $output = json_decode($stub, true);
-        $output['status'] = 200;
+        $output['code'] = 200;
         $saveCard->toArray()->shouldReturn($output);
     }
 }

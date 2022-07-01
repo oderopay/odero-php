@@ -60,4 +60,12 @@ class BaseResponse
     {
         return $this->code == 200;
     }
+
+    /**
+     * @return int
+     */
+    public function getCode(): int
+    {
+        return $this->code;
+    }
 }

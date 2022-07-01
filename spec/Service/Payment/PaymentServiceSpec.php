@@ -50,9 +50,9 @@ class PaymentServiceSpec extends ObjectBehavior
 
         $payment = $this->create($payment);
         $payment->shouldReturnAnInstanceOf(PaymentIntentResponse::class);
-        $payment->getStatus()->shouldReturn(200);
+        $payment->getCode()->shouldReturn(200);
         $output = json_decode($stub, true);
-        $output['status'] = 200;
+        $output['code'] = 200;
 
         $payment->toArray()->shouldReturn($output);
 
