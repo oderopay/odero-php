@@ -16,7 +16,7 @@
         "psr-0": {"": "src"}
     },
     "require-dev": {
-        "phpspec/phpspec": "^6.3",
+        "phpspec/phpspec": "^7.2",
         "symfony/var-dumper": "^5.4",
         "phpspec/prophecy": "^1.15"
     },

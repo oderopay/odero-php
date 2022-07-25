@@ -1,7 +1,9 @@
 {
-  "requestId": "uuid",
+  "code" : 200,
   "message": "string",
+  "requestId": "uuid",
   "data": {
+    "paymentId": "uuid",
     "url": "string"
   }
 }
