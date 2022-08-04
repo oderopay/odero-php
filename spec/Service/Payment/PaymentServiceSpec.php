@@ -37,10 +37,9 @@ class PaymentServiceSpec extends BaseServiceSpec
 
         $payment = $this->create($payment);
         $payment->shouldReturnAnInstanceOf(PaymentIntentResponse::class);
-        $payment->getCode()->shouldReturn(200);
         $output = json_decode($stub, true);
 
-        $payment->toArray()->shouldReturn($output);
+        $payment->toArray()->shouldBe($output);
 
     }
 
