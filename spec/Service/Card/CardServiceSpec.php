@@ -54,10 +54,12 @@ class CardServiceSpec extends ObjectBehavior
         $stub = file_get_contents(OderoClient::APP_DIR . "stubs/card/response.json");
 
         $card = new SaveCard();
+        /** @var CardSaveResponse $saveCard */
         $saveCard = $this->create($card);
         $saveCard->shouldReturnAnInstanceOf(CardSaveResponse::class);
         $saveCard->getCode()->shouldReturn(200);
-        $output = json_decode($stub, true);
-        $saveCard->toArray()->shouldBe($output);
+        $saveCard->getRequestId()->shouldReturn('uuid');
+        $saveCard->getMessage()->shouldReturn('string');
+        $saveCard->toArray()->shouldBeArray();
     }
 }

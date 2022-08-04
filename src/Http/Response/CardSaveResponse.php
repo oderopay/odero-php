@@ -13,4 +13,21 @@ class CardSaveResponse extends BaseResponse
 
     /** @var array */
     public $data = [];
+
+
+    /**
+     * @return string
+     */
+    public function getRequestId()
+    {
+        return $this->requestId;
+    }
+
+    /**
+     * @param string $requestId
+     */
+    public function setRequestId(string $requestId): void
+    {
+        $this->requestId = $requestId;
+    }
 }

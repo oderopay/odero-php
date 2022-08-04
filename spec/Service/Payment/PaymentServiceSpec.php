@@ -33,13 +33,13 @@ class PaymentServiceSpec extends BaseServiceSpec
     public function it_should_have_create_payment_request()
     {
         $payment = new Payment();
-        $stub = file_get_contents(OderoClient::APP_DIR . "/stubs/payment/success.json");
 
         $payment = $this->create($payment);
         $payment->shouldReturnAnInstanceOf(PaymentIntentResponse::class);
-        $output = json_decode($stub, true);
-
-        $payment->toArray()->shouldBe($output);
+        $payment->getCode()->shouldReturn(200);
+        $payment->getMessage()->shouldReturn('string');
+        $payment->getRequestId()->shouldReturn('uuid');
+        $payment->toArray()->shouldBeArray();
 
     }
 
