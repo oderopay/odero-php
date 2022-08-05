@@ -8,12 +8,14 @@ use Oderopay\Service\Card\CardService;
 use Oderopay\Service\Payment\PaymentService;
 use Oderopay\Service\Payment\SubscriptionService;
 use Oderopay\Service\ServiceFactory;
+use Oderopay\Service\Webhook\WebhookService;
 
 /**
  * Oderopay client class.
  * @property PaymentService $payments
  * @property CardService $cards
  * @property SubscriptionService $subscriptions
+ * @property WebhookService $webhooks
  */
 class OderoClient implements OderoClientInterface
 {

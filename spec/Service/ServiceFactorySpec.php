@@ -9,6 +9,7 @@ use Oderopay\Service\AbstractServiceFactory;
 use Oderopay\Service\Card\CardService;
 use Oderopay\Service\Payment\PaymentService;
 use Oderopay\Service\Payment\SubscriptionService;
+use Oderopay\Service\Webhook\WebhookService;
 use PhpSpec\ObjectBehavior;
 
 class ServiceFactorySpec extends ObjectBehavior
@@ -36,5 +37,9 @@ class ServiceFactorySpec extends ObjectBehavior
 
     function it_should_have_subscription_service_class(){
         $this->getServiceClass('subscriptions')->shouldBe(SubscriptionService::class);
+    }
+
+    function it_should_have_webhook_service_class(){
+        $this->getServiceClass('webhooks')->shouldBe(WebhookService::class);
     }
 }
