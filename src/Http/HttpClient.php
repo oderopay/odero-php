@@ -24,6 +24,12 @@ class HttpClient
     public function request($method = 'POST', $uri = '', $options = [])
     {
         $options['json'] = $options['form_params'] ?? []; unset($options['form_params']);
+
+        //guzzle 5+ compatibility
+        if(method_exists($this->client, 'createRequest')){
+            return $this->client->send($this->client->createRequest($method, $uri, $options));
+        }
+
         return $this->client->request($method, $uri, $options);
     }
 }

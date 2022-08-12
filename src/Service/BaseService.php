@@ -68,7 +68,7 @@ class BaseService
             $response = new HttpResponse();
             $response->code = $message->getStatusCode();
             $response->content = $message->getBody()->getContents();
-        }catch (GuzzleException $e ){
+        }catch (\Exception $e ){
             $response = new HttpResponse();
             $error =  json_decode($e->getResponse()->getBody()->getContents(), true);
             $response->message = $error['message'] ?? $e->getMessage();
