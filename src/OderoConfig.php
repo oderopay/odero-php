@@ -32,7 +32,7 @@ class OderoConfig
         $this->env = $env;
 
         //todo check later
-        $this->apiHost = 'https://cardacq-oderopsp.stg.zitec.com';
+        $this->apiHost = 'http://localhost:7000';
         if($env === self::ENV_PROD) {
             $this->apiHost = 'https://cardacq-oderopsp.stg.zitec.com';
         }

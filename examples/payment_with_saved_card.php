@@ -44,14 +44,14 @@ $products[] = $product2;
 
 $paymentRequest = new \Oderopay\Model\Payment\Payment();
 $paymentRequest
-    ->setCurrency('USD')
+    ->setCurrency('RON')
     ->setExtOrderId('external-random-id')
     ->setExtOrderUrl('https://mystore.com/orders/3244234')
     ->setReturnUrl('https://mystore.com/sample-product.html')
     ->setMerchantId('{merchant-id}')
     ->setCustomer($customer)
     ->setProducts($products)
-    ->setCardToken('savedCard_token') //add card token
+    ->setCardToken('ecfca080e4726d7f132fb4cb28b30e189ce68bf5050d3f129504765349885134') //add card token
 ;
 
 $payment = $oderopay->payments->create($paymentRequest); //PaymentIntentResponse
