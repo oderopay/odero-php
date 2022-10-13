@@ -58,7 +58,7 @@ class CardServiceSpec extends ObjectBehavior
         $saveCard = $this->create($card);
         $saveCard->shouldReturnAnInstanceOf(CardSaveResponse::class);
         $saveCard->getCode()->shouldReturn(200);
-        $saveCard->getRequestId()->shouldReturn('uuid');
+        $saveCard->getOperationId()->shouldReturn('uuid');
         $saveCard->getMessage()->shouldReturn('string');
         $saveCard->toArray()->shouldBeArray();
     }

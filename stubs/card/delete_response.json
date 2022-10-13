@@ -1,4 +1,4 @@
 {
-  "requestId": "uuid",
+  "operationId": "uuid",
   "message": "string"
 }

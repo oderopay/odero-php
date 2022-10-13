@@ -13,7 +13,8 @@ class WebhookService extends BaseService
     {
         if(empty($payload) || !isset($payload['type'])) return new BaseWebhook();
 
-        $modelName = sprintf('\\Oderopay\\Model\\Webhook\\%s', ucfirst($payload['type']));
+        $className = str_replace("_", "", ucwords($payload['type'], "_"));
+        $modelName = sprintf('\\Oderopay\\Model\\Webhook\\%s', $className);
 
         if(class_exists($modelName)){
             $model = new $modelName;
@@ -21,7 +22,7 @@ class WebhookService extends BaseService
             return $model;
         }
 
-        throw new \InvalidArgumentException('Unexpected callback type');
+        throw new \InvalidArgumentException(sprintf('Class %s does not exists for callback type %s', $className, $payload['type']));
 
     }
 

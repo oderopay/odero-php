@@ -1,0 +1,11 @@
+{
+  "type": "deposit",
+  "operationId": "1ed4a34f-60c8-687a-a14d-d53acf3cde4e",
+  "status": "SUCCESS",
+  "message": "Deposit successful.",
+  "data": {
+    "paymentId": "9e60d19a-62e0-4d6a-a482-922ff6f01933",
+    "paymentOperationId": "1ed4a34b-79a1-6fee-ad98-e794f89a217a",
+    "amount": "50.88"
+  }
+}

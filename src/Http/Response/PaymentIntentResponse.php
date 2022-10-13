@@ -10,7 +10,7 @@ class PaymentIntentResponse extends BaseResponse
     use FromArrayTrait;
 
     /** @var string */
-    public $requestId;
+    public $operationId;
 
     /** @var string */
     public $message;
@@ -21,17 +21,17 @@ class PaymentIntentResponse extends BaseResponse
     /**
      * @return string
      */
-    public function getRequestId()
+    public function getOperationId(): string
     {
-        return $this->requestId;
+        return $this->operationId;
     }
 
     /**
-     * @param string $requestId
+     * @param string $operationId
      */
-    public function setRequestId(string $requestId): void
+    public function setOperationId(string $operationId): void
     {
-        $this->requestId = $requestId;
+        $this->operationId = $operationId;
     }
 
 }

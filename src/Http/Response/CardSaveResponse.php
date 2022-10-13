@@ -6,7 +6,7 @@ namespace Oderopay\Http\Response;
 class CardSaveResponse extends BaseResponse
 {
     /** @var string */
-    public $requestId;
+    public $operationId;
 
     /** @var string */
     public $message;
@@ -14,20 +14,21 @@ class CardSaveResponse extends BaseResponse
     /** @var array */
     public $data = [];
 
-
     /**
      * @return string
      */
-    public function getRequestId()
+    public function getOperationId(): string
     {
-        return $this->requestId;
+        return $this->operationId;
     }
 
     /**
-     * @param string $requestId
+     * @param string $operationId
      */
-    public function setRequestId(string $requestId): void
+    public function setOperationId(string $operationId): void
     {
-        $this->requestId = $requestId;
+        $this->operationId = $operationId;
     }
+
+
 }

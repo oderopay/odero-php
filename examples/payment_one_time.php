@@ -44,19 +44,22 @@ $products[] = $product2;
 
 $paymentRequest = new \Oderopay\Model\Payment\Payment();
 $paymentRequest
-    ->setCurrency('USD')
+    ->setCurrency('RON')
     ->setExtOrderId('external-random-id')
-    ->setExtOrderUrl('https://mystore.com/orders/3244234')
-    ->setReturnUrl('https://mystore.com/sample-product.html')
-    ->setMerchantId('{merchant-id}')
+    ->setExtOrderUrl('https://tokenco.shop/orders/3244234')
+    ->setReturnUrl('https://tokenco.shop/')
+    ->setMerchantId('56a72ffe-8d69-48df-a10e-91e64d6c7033')
     ->setCustomer($customer)
     ->setProducts($products)
+    ->setSaveCard(true);
 ;
 
 $payment = $oderopay->payments->create($paymentRequest); //PaymentIntentResponse
 
+dd($payment);
 if($payment->isSuccess()){
     dump($payment);
+
     //redirect to $payment->data['url'];
 }else{
     echo $payment->message;

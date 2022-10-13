@@ -1,0 +1,9 @@
+{
+  "type": "remove_stored_card",
+  "operationId": "1ed4ade7-c4a0-6d00-a09b-ed7e63f1aa16",
+  "status": "SUCCESS",
+  "message": "Remove card successful.",
+  "data": {
+    "storedCardToken": "card token will be here"
+  }
+}
