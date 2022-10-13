@@ -38,7 +38,7 @@ class PaymentServiceSpec extends BaseServiceSpec
         $payment->shouldReturnAnInstanceOf(PaymentIntentResponse::class);
         $payment->getCode()->shouldReturn(200);
         $payment->getMessage()->shouldReturn('string');
-        $payment->getRequestId()->shouldReturn('uuid');
+        $payment->getOperationId()->shouldReturn('uuid');
         $payment->toArray()->shouldBeArray();
 
     }

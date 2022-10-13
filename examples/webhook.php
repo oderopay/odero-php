@@ -1,4 +1,7 @@
 <?php
+
+use Oderopay\Model\Webhook\Refund;
+
 require_once "client.php";
 
 $payload = @file_get_contents('php://input');
@@ -14,7 +17,20 @@ try {
             // handlePaymentIntentSucceeded($paymentIntent);
             break;
         case $event instanceof \Oderopay\Model\Webhook\Refund:
-            $paymentId = $event->getOperationId();
+            /** @var  Refund $event */
+            $operationId = $event->getOperationId();
+            $paymentId = $event->getPaymentId();
+            $amount = $event->getAmount();
+
+            // Then update your data
+
+        case $event instanceof \Oderopay\Model\Webhook\StoredCard:
+            /** @var  \Oderopay\Model\Webhook\StoredCard $event */
+            $operationId = $event->getOperationId();
+            $cardToken = $event->getCardToken();
+            $cardExpirationMonth = $event->getExpirationMonth();
+            $cardExpirationYear = $event->getExpirationYear();
+            $cardLastFourDigits = $event->getLastFourDigits();
 
             // Then update your data
             break;

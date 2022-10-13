@@ -1,0 +1,12 @@
+{
+  "type": "stored_card",
+  "operationId": "1ed4ac06-eb95-6a6a-89fb-9b562db4a5db",
+  "status": "SUCCESS",
+  "message": "Card saved successful.",
+  "data": {
+    "cardToken": "sample token",
+    "lastFourDigits": "7499",
+    "expirationMonth": 4,
+    "expirationYear": 2023
+  }
+}

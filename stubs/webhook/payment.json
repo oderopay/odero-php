@@ -1,0 +1,14 @@
+{
+  "type": "payment",
+  "operationId": "1ed4a356-55ea-67bc-b39f-83aa9247ea19",
+  "status": "SUCCESS",
+  "message": "Payment successful.",
+  "data": {
+    "depositMade": false,
+    "cardToken": null,
+    "lastFourDigits": null,
+    "expirationMonth": null,
+    "expirationYear": null,
+    "paymentId": "7cbe2ee3-4324-4c0e-b2f6-4fe2920a77de"
+  }
+}

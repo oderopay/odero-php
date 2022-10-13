@@ -2,17 +2,8 @@
 
 namespace Oderopay\Model\Webhook;
 
-class Payment extends BaseWebhook
+class StoredCard extends BaseWebhook
 {
-
-    /**
-     * @return bool
-     */
-    public function isDepositMade(): bool
-    {
-        return $this->data['depositMade'] ?? false;
-    }
-
 
     /**
      * @return mixed|null
