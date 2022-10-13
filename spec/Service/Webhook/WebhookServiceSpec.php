@@ -45,10 +45,11 @@ class WebhookServiceSpec extends BaseServiceSpec
 
         $model->shouldBeAnInstanceOf(\Oderopay\Model\Webhook\Payment::class);
 
-        $model->getCardToken()->shouldBe('sample token');
-        $model->getLastFourDigits()->shouldBe('7499');
-        $model->getExpirationMonth()->shouldBe(4);
-        $model->getExpirationYear()->shouldBe(2023);
+        $model->isDepositMade()->shouldBe(false);
+        $model->getCardToken()->shouldBe(null);
+        $model->getLastFourDigits()->shouldBe(null);
+        $model->getExpirationMonth()->shouldBe(null);
+        $model->getExpirationYear()->shouldBe(null);
 
     }
 
