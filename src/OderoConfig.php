@@ -31,10 +31,10 @@ class OderoConfig
         $this->merchantToken = $merchantToken;
         $this->env = $env;
 
-        //todo check later
-        $this->apiHost = 'http://localhost:7000';
+        $this->apiHost = 'https://api-stg.pay.odero.ro';
+
         if($env === self::ENV_PROD) {
-            $this->apiHost = 'https://cardacq-oderopsp.stg.zitec.com';
+            $this->apiHost = 'https://pay.odero.ro';
         }
 
     }
