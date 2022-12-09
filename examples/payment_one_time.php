@@ -27,7 +27,7 @@ $product1
     ->setExtId('123')
     ->setImageUrl('https://site.com/image/product1.jpg')
     ->setName('Product Name')
-    ->setPrice(99.99)
+    ->setPrice(0.99)
     ->setQuantity(1);
 
 $products[] = $product1;
@@ -37,7 +37,7 @@ $product2
     ->setExtId('123')
     ->setImageUrl('https://site.com/image/product1.jpg')
     ->setName('Product Name')
-    ->setPrice(99.99)
+    ->setPrice(1.99)
     ->setQuantity(1);
 
 $products[] = $product2;
@@ -45,7 +45,7 @@ $products[] = $product2;
 $paymentRequest = new \Oderopay\Model\Payment\Payment();
 $paymentRequest
     ->setCurrency('RON')
-    ->setExtOrderId('external-random-id')
+    ->setExtOrderId('UNIQUE1111')
     ->setExtOrderUrl('https://tokenco.shop/orders/3244234')
     ->setReturnUrl('https://tokenco.shop/')
     ->setMerchantId('56a72ffe-8d69-48df-a10e-91e64d6c7033')
