@@ -47,6 +47,12 @@ class Payment extends AbstractRequest
     /** @var null|Subscription */
     protected $recurringInformation = null;
 
+    /** @var string */
+    protected $successUrl = null;
+
+    /** @var string */
+    protected $failUrl = null;
+
     public function __construct()
     {
         $this->submerchants = [];
@@ -286,6 +292,50 @@ class Payment extends AbstractRequest
     public function setRecurring(bool $recurring): Payment
     {
         $this->recurring = $recurring;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSuccessUrl(): ?string
+    {
+        return $this->successUrl;
+    }
+
+    /**
+     * @param string $successUrl
+     */
+    public function setSuccessUrl(?string $successUrl)
+    {
+        if(is_null($successUrl)){
+            $this->successUrl = $this->getReturnUrl();
+        }else{
+            $this->successUrl =  base64_encode($successUrl);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFailUrl(): ?string
+    {
+        return $this->failUrl;
+    }
+
+    /**
+     * @param string $failUrl
+     */
+    public function setFailUrl(?string $failUrl)
+    {
+        if(is_null($failUrl)){
+            $this->failUrl = $this->getReturnUrl();
+        }else{
+            $this->failUrl =  base64_encode($failUrl);
+        }
+
         return $this;
     }
 }
