@@ -52,8 +52,8 @@ $paymentRequest
     ->setCustomer($customer)
     ->setProducts($products)
     ->setSaveCard(true)
-    ->setSuccessUrl('https://google.com?success')
-    ->setFailUrl('https://google.com?fail')
+    ->setSuccessUrl('https://tokenco.shop/?success=true')
+    ->setFailUrl('https://tokenco.shop/?success=false')
 ;
 
 $payment = $oderopay->payments->create($paymentRequest); //PaymentIntentResponse
