@@ -53,6 +53,15 @@ class Payment extends AbstractRequest
     /** @var string */
     protected $failUrl = null;
 
+    /** @var bool  */
+    protected $extOrderIsInstalment = false;
+
+    /** @var string  */
+    protected $extOrderInstalmentBank = 'bt';
+
+    /** @var array  */
+    protected $extOrderInstalmentPayments = [];
+
     public function __construct()
     {
         $this->submerchants = [];
@@ -338,5 +347,62 @@ class Payment extends AbstractRequest
 
         return $this;
     }
+
+    /**
+     * @return bool
+     */
+    public function isExtOrderIsInstalment(): bool
+    {
+        return $this->extOrderIsInstalment;
+    }
+
+    /**
+     * @param bool $extOrderIsInstalment
+     */
+    public function setExtOrderIsInstalment(bool $extOrderIsInstalment): void
+    {
+        $this->extOrderIsInstalment = $extOrderIsInstalment;
+    }
+
+    /**
+     * @return string
+     */
+    public function getExtOrderInstalmentBank(): string
+    {
+        return $this->extOrderInstalmentBank;
+    }
+
+    /**
+     * @param string $extOrderInstalmentBank
+     */
+    public function setExtOrderInstalmentBank(string $extOrderInstalmentBank): void
+    {
+        $this->extOrderInstalmentBank = $extOrderInstalmentBank;
+    }
+
+    /**
+     * @return array
+     */
+    public function getExtOrderInstalmentPayments(): array
+    {
+        return $this->extOrderInstalmentPayments;
+    }
+
+    /**
+     * @return Payment
+     */
+    public function setExtOrderInstalmentPayments($extOrderInstalmentPayments)
+    {
+        if (!is_array($extOrderInstalmentPayments)){
+            $this->extOrderInstalmentPayments = [$extOrderInstalmentPayments];
+
+            return $this;
+        }
+
+        $this->extOrderInstalmentPayments = $extOrderInstalmentPayments;
+
+        return $this;
+    }
+
 }
 

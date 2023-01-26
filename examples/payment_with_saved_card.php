@@ -51,11 +51,13 @@ $paymentRequest
     ->setMerchantId('{merchant-id}')
     ->setCustomer($customer)
     ->setProducts($products)
-    ->setCardToken('ecfca080e4726d7f132fb4cb28b30e189ce68bf5050d3f129504765349885134') //add card token
+    ->setCardToken('1065f952bb77090d7929f933748a31a8c51a707d133d09e9224dd3ca30c78f4d') //add card token
+    ->setSuccessUrl('https://tokenco.shop/?success=true&orderId=324234&test=test')
+    ->setFailUrl('https://tokenco.shop/?success=false&orderId=324234&test=test')
 ;
-
 $payment = $oderopay->payments->create($paymentRequest); //PaymentIntentResponse
 
+dd($payment);
 if($payment->isSuccess()){
     dump($payment);
     //redirect to $payment->data['url'];

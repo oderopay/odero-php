@@ -24,17 +24,17 @@ $customer
 $products = [];
 $product1 = new \Oderopay\Model\Payment\BasketItem();
 $product1
-    ->setExtId('123')
+    ->setExtId('123123')
     ->setImageUrl('https://site.com/image/product1.jpg')
     ->setName('Product Name')
-    ->setPrice(0.99)
+    ->setPrice(2.99)
     ->setQuantity(1);
 
 $products[] = $product1;
 
 $product2 = new \Oderopay\Model\Payment\BasketItem();
 $product2
-    ->setExtId('123')
+    ->setExtId('12323')
     ->setImageUrl('https://site.com/image/product1.jpg')
     ->setName('Product Name')
     ->setPrice(1.99)
@@ -42,18 +42,30 @@ $product2
 
 $products[] = $product2;
 
+//$product3 = new \Oderopay\Model\Payment\BasketItem();
+//$product3
+//    ->setExtId('123223423')
+//    ->setImageUrl('https://site.com/image/product1.jpg')
+//    ->setName('Product Name 333333')
+//    ->setPrice(6.99)
+//    ->setQuantity(1);
+//
+//$products[] = $product3;
+
 $paymentRequest = new \Oderopay\Model\Payment\Payment();
 $paymentRequest
     ->setCurrency('RON')
-    ->setExtOrderId('FAILTEST')
+    ->setExtOrderId('InstallmentTest2')
     ->setExtOrderUrl('https://tokenco.shop/orders/3244234')
     ->setReturnUrl('https://tokenco.shop/')
     ->setMerchantId('56a72ffe-8d69-48df-a10e-91e64d6c7033')
     ->setCustomer($customer)
     ->setProducts($products)
     ->setSaveCard(true)
-    ->setSuccessUrl('https://tokenco.shop/?success=true')
-    ->setFailUrl('https://tokenco.shop/?success=false')
+    ->setSuccessUrl('https://tokenco.shop/?success=true&orderId=324234&test=test')
+    ->setFailUrl('https://tokenco.shop/?success=false&orderId=324234&test=test')
+    ->setExtOrderInstalmentPayments([10,12,18])
+    ->setExtOrderIsInstalment(true)
 ;
 
 $payment = $oderopay->payments->create($paymentRequest); //PaymentIntentResponse
