@@ -27,7 +27,7 @@ class PaymentService extends BaseService
 
         if(empty($payment->getSubMerchants())){
             $merchant = new Merchant();
-            $merchant->setAmount($total);
+            $merchant->setAmount($payment->getAmount());
             $merchant->setName($this->client->config->getName());
             $merchant->setExtId($this->client->config->getMerchantId());
             $merchant->setCommission(0);
