@@ -31,9 +31,7 @@ class OderoConfig
         $this->merchantToken = $merchantToken;
         $this->env = $env;
 
-        //$this->apiHost = 'https://api-stg.pay.odero.ro';
-        $this->apiHost = 'http://127.0.0.1:7000';
-        $this->apiHost = 'https://api-dev.pay.odero.ro';
+        $this->apiHost = 'https://api-stg.pay.odero.ro';
 
         if($env === self::ENV_PROD) {
             $this->apiHost = 'https://pay.odero.ro';
