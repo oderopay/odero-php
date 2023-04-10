@@ -5,6 +5,7 @@ namespace Oderopay\Service;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Exception\ServerException;
 use Oderopay\Http\HttpClient;
 use Oderopay\Http\HttpResponse;
 use Oderopay\OderoClient;

@@ -1,8 +1,8 @@
 <?php
 require_once __DIR__ . "/../vendor/autoload.php";
 
-$merchantId = '1207ba5d-9c10-4849-bf71-31e306a95cda'; //uuid
-$token = '9cc4b738f2161d83eb73e80bb3f55de9';
+$merchantId = '4bcdfbff-a547-4dad-984a-8490fb7741bf'; //uuid
+$token = '112cbc30a55096b5b92015b20077aea0';
 
 
 //Authentication is already handled by SDK

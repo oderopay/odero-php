@@ -33,6 +33,9 @@ class OderoConfig
 
         $this->apiHost = 'https://api-stg.pay.odero.ro';
 
+        $this->apiHost = 'https://api-dev.pay.odero.ro';
+        $this->apiHost = 'http://127.0.0.1:7000';
+
         if($env === self::ENV_PROD) {
             $this->apiHost = 'https://pay.odero.ro';
         }
