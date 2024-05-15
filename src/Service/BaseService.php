@@ -35,7 +35,7 @@ class BaseService
      */
     public function generateMerchantSignature(array $body, $merchantId, $merchantToken): string
     {
-        $merchantSignatureHeader = hash("sha256", $merchantId . json_encode($body, JSON_NUMERIC_CHECK) . $merchantToken);
+        $merchantSignatureHeader = hash("sha256", $merchantId . json_encode($body) . $merchantToken);
         return sprintf('%s|%s', $merchantId, $merchantSignatureHeader);
     }
 
