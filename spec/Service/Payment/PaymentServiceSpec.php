@@ -2,28 +2,24 @@
 
 namespace spec\Oderopay\Service\Payment;
 
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Psr7\Response;
+use Oderopay\Service\BaseService;
+use spec\Oderopay\Service\BaseServiceSpec as BaseServiceSp;
 use Oderopay\Http\Response\PaymentIntentResponse;
 use Oderopay\Model\Payment\Payment;
 use Oderopay\OderoClient;
-use Oderopay\Service\BaseService;
-use spec\Oderopay\Service\BaseServiceSpec;
+use Symfony\Component\HttpClient\Response\MockResponse;
 
-class PaymentServiceSpec extends BaseServiceSpec
+class PaymentServiceSpec extends BaseServiceSp
 {
     function let()
     {
         $paymentSuccess = file_get_contents(OderoClient::APP_DIR . "/stubs/payment/success.json");
         // Create a mock and queue two responses.
-        $this->mockHandlerQueue = [
-            new Response(200, [], $paymentSuccess),
-            new Response(400, []),
-            new Response(403, []),
-            new RequestException('Error Communicating with Server', new Request('GET', 'test'))
-        ];
+
+		$this->mockHandlerQueue = [
+			new MockResponse($paymentSuccess),
+			new MockResponse([], ['http_code' => 400]),
+		];
 
         $this->beConstructedWith($this->getOderoClient(), $this->getHttpClient());
         $this->shouldBeAnInstanceOf(BaseService::class);

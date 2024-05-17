@@ -6,7 +6,6 @@ namespace Oderopay\Http\Response;
 use Oderopay\Http\HttpResponse;
 use Oderopay\Traits\FromArrayTrait;
 use Oderopay\Traits\SerializerTrait;
-use Psr\Http\Message\ResponseInterface;
 
 class BaseResponse
 {
@@ -36,7 +35,9 @@ class BaseResponse
     {
         $this->code = $response->code;
 
-        if($response->content){
+		if(is_array($response->content)){
+			$this->fromArray($response->content);
+		} elseif($response->content){
             $contents = json_decode($response->content, true);
             $this->fromArray($contents);
         }else{

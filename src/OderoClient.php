@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace Oderopay;
 
-use GuzzleHttp\Client;
 use Oderopay\Service\Card\CardService;
 use Oderopay\Service\Payment\PaymentService;
 use Oderopay\Service\Payment\SubscriptionService;
 use Oderopay\Service\ServiceFactory;
 use Oderopay\Service\Webhook\WebhookService;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 /**
  * Oderopay client class.
@@ -29,7 +29,7 @@ class OderoClient implements OderoClientInterface
     /** @var OderoConfig */
     public $config;
 
-    /** @var Client */
+    /** @var HttpClientInterface */
     public $http;
 
     public function __construct(OderoConfig $config)

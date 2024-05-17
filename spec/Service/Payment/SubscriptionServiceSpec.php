@@ -2,7 +2,6 @@
 
 namespace spec\Oderopay\Service\Payment;
 
-use GuzzleHttp\Client;
 use Oderopay\Http\HttpClient;
 use Oderopay\Model\Payment\Payment;
 use Oderopay\OderoClient;
@@ -10,6 +9,8 @@ use Oderopay\OderoConfig;
 use Oderopay\Service\BaseService;
 use Oderopay\Service\Payment\SubscriptionService;
 use PhpSpec\ObjectBehavior;
+use Symfony\Component\HttpClient\MockHttpClient;
+use Symfony\Component\HttpClient\Response\MockResponse;
 
 class SubscriptionServiceSpec extends ObjectBehavior
 {
@@ -18,8 +19,9 @@ class SubscriptionServiceSpec extends ObjectBehavior
         $config = new OderoConfig('MY Store Name', 'merchantId', 'token');
         $oderoClient = new OderoClient($config);
 
-        $client = new Client(['base_uri' => $config->getApiHost()]);
-        $http = new HttpClient($client);
+		$client = new MockHttpClient();
+		$http = new HttpClient($client);
+
 
         $this->beConstructedWith($oderoClient, $http);
     }

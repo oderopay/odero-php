@@ -2,12 +2,6 @@
 
 namespace spec\Oderopay\Service\Card;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Psr7\Response;
 use Oderopay\Http\HttpClient;
 use Oderopay\Http\Response\CardSaveResponse;
 use Oderopay\Model\Card\SaveCard;
@@ -16,6 +10,8 @@ use Oderopay\OderoConfig;
 use Oderopay\Service\BaseService;
 use Oderopay\Service\Card\CardService;
 use PhpSpec\ObjectBehavior;
+use Symfony\Component\HttpClient\MockHttpClient;
+use Symfony\Component\HttpClient\Response\MockResponse;
 
 class CardServiceSpec extends ObjectBehavior
 {
@@ -27,16 +23,12 @@ class CardServiceSpec extends ObjectBehavior
         $cardSuccess = file_get_contents(OderoClient::APP_DIR . "stubs/card/response.json");
         $cardError = file_get_contents(OderoClient::APP_DIR . "stubs/card/bad_request.json");
 
-        // Create a mock and queue two responses.
-        $mock = new MockHandler([
-            new Response(200, [], $cardSuccess),
-            new Response(400, [], $cardError),
-            new RequestException('Error Communicating with Server', new Request('GET', 'test'))
-        ]);
+		$responses = [
+			new MockResponse($cardSuccess),
+			new MockResponse($cardError, ['http_code' => 400]),
+		];
 
-        $handlerStack = HandlerStack::create($mock);
-
-        $client = new Client(['base_uri' => $config->getApiHost(), 'handler' => $handlerStack]);
+		$client = new MockHttpClient($responses);
         $http = new HttpClient($client);
 
         $this->beConstructedWith($oderoClient, $http);

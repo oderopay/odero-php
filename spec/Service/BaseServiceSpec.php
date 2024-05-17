@@ -2,13 +2,11 @@
 
 namespace spec\Oderopay\Service;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\HandlerStack;
 use Oderopay\Http\HttpClient;
 use Oderopay\OderoClient;
 use Oderopay\OderoConfig;
 use PhpSpec\ObjectBehavior;
+use Symfony\Component\HttpClient\MockHttpClient;
 
 class BaseServiceSpec extends ObjectBehavior
 {
@@ -25,11 +23,7 @@ class BaseServiceSpec extends ObjectBehavior
     public function getHttpClient(): HttpClient
     {
         $oderoClient = $this->getOderoClient();
-
-        $handlerStack = HandlerStack::create(new MockHandler($this->mockHandlerQueue));
-
-        $client = new Client(['base_uri' => $oderoClient->config->getApiHost(), 'handler' => $handlerStack]);
-
+		$client = new MockHttpClient($this->mockHandlerQueue);
         return new HttpClient($client);
     }
 

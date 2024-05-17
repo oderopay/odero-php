@@ -25,6 +25,11 @@
         "ext-json" : "*",
         "ext-curl" : "*",
         "ext-mbstring" : "*",
-        "guzzlehttp/guzzle": ">=5.3"
+        "symfony/http-client": "^6.4"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     }
 }

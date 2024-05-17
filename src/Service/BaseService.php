@@ -3,12 +3,11 @@ declare(strict_types=1);
 
 namespace Oderopay\Service;
 
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\GuzzleException;
-use GuzzleHttp\Exception\ServerException;
 use Oderopay\Http\HttpClient;
 use Oderopay\Http\HttpResponse;
 use Oderopay\OderoClient;
+use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\HttpExceptionInterface;
 
 class BaseService
 {
@@ -17,7 +16,7 @@ class BaseService
      */
     public $client;
     /**
-     * @var ClientInterface
+     * @var HttpExceptionInterface
      */
     public $http;
 
@@ -63,16 +62,18 @@ class BaseService
 
         $uri = sprintf('%s/%s', $this->client->config->getApiHost(), $uri);
 
+		$response = new HttpResponse();
+
         try {
             $message = $this->http->request($method, $uri, $options);
-
-            $response = new HttpResponse();
             $response->code = $message->getStatusCode();
-            $response->content = $message->getBody()->getContents();
-        }catch (\Exception $e ){
-            $response = new HttpResponse();
-            $error =  json_decode($e->getResponse()->getBody()->getContents(), true);
-            $response->message = $error['message'] ?? $e->getMessage();
+            $response->content = $message->toArray();
+        }catch (ClientExceptionInterface $e){
+            $error =  $e->getResponse()->toArray(false);
+            $response->message = $error;
+            $response->code = $e->getCode();
+        }catch (\Exception $e){
+            $response->message = $e->getMessage();
             $response->code = $e->getCode();
         }
 
