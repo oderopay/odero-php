@@ -21,7 +21,7 @@
         "phpspec/prophecy": "^1.15"
     },
     "require": {
-        "php" : ">=7.2",
+        "php" : ">=8.0",
         "ext-json" : "*",
         "ext-curl" : "*",
         "ext-mbstring" : "*",
