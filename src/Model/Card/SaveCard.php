@@ -8,85 +8,76 @@ use Oderopay\Model\Payment\Customer;
 
 class SaveCard extends AbstractRequest
 {
-    protected $merchantId;
+    protected ?string $merchantId;
 
-    protected $returnUrl;
+    protected ?string $returnUrl;
 
-    protected $currency;
+    protected ?string $currency;
 
-    /** @var Customer */
-    protected $customer;
+    /** @var ?Customer */
+    protected ?Customer $customer;
 
-    /**
-     * @return mixed
-     */
-    public function getMerchantId()
-    {
-        return $this->merchantId;
-    }
+	/**
+	 * @return string|null
+	 */
+	public function getMerchantId(): ?string
+	{
+		return $this->merchantId;
+	}
 
-    /**
-     * @param mixed $merchantId
-     * @return SaveCard
-     */
-    public function setMerchantId($merchantId): SaveCard
-    {
-        $this->merchantId = $merchantId;
-        return $this;
-    }
+	/**
+	 * @param string|null $merchantId
+	 */
+	public function setMerchantId(?string $merchantId): void
+	{
+		$this->merchantId = $merchantId;
+	}
 
-    /**
-     * @return mixed
-     */
-    public function getReturnUrl()
-    {
-        return $this->returnUrl;
-    }
+	/**
+	 * @return string|null
+	 */
+	public function getReturnUrl(): ?string
+	{
+		return $this->returnUrl;
+	}
 
-    /**
-     * @param mixed $returnUrl
-     * @return SaveCard
-     */
-    public function setReturnUrl($returnUrl): SaveCard
-    {
-        $this->returnUrl = base64_encode($returnUrl);
-        return $this;
-    }
+	/**
+	 * @param string|null $returnUrl
+	 */
+	public function setReturnUrl(?string $returnUrl): void
+	{
+		$this->returnUrl = $returnUrl;
+	}
 
-    /**
-     * @return mixed
-     */
-    public function getCurrency()
-    {
-        return $this->currency;
-    }
+	/**
+	 * @return string|null
+	 */
+	public function getCurrency(): ?string
+	{
+		return $this->currency;
+	}
 
-    /**
-     * @param mixed $currency
-     * @return SaveCard
-     */
-    public function setCurrency($currency)
-    {
-        $this->currency = $currency;
-        return $this;
-    }
+	/**
+	 * @param string|null $currency
+	 */
+	public function setCurrency(?string $currency): void
+	{
+		$this->currency = $currency;
+	}
 
-    /**
-     * @return Customer
-     */
-    public function getCustomer(): ?Customer
-    {
-        return $this->customer;
-    }
+	/**
+	 * @return Customer|null
+	 */
+	public function getCustomer(): ?Customer
+	{
+		return $this->customer;
+	}
 
-    /**
-     * @param Customer|null $customer
-     * @return SaveCard
-     */
-    public function setCustomer(?Customer $customer): SaveCard
-    {
-        $this->customer = $customer;
-        return $this;
-    }
-
+	/**
+	 * @param Customer|null $customer
+	 */
+	public function setCustomer(?Customer $customer): void
+	{
+		$this->customer = $customer;
+	}
 }

@@ -3,18 +3,16 @@ declare(strict_types=1);
 
 namespace Oderopay\Model\Payment;
 
-use Oderopay\Model\AbstractRequest;
-use Oderopay\Model\Subscription\Subscription;
 
 class PaymentLink extends Payment
 {
-    public $expireAt;
+    public ?string $expireAt;
 
-    public $itemDescription;
+    public ?string $itemDescription;
 
-    public $email = null;
+    public ?string $email = null;
 
-    public $amount;
+    public ?float $amount;
 
     public function setExpireAt(\DateTime $date)
     {
@@ -26,7 +24,7 @@ class PaymentLink extends Payment
     /**
      * @return mixed
      */
-    public function getItemDescription()
+    public function getItemDescription(): string
     {
         return $this->itemDescription;
     }
@@ -42,9 +40,9 @@ class PaymentLink extends Payment
     }
 
     /**
-     * @return null
+     * @return ?string
      */
-    public function getEmail()
+    public function getEmail() : ?string
     {
         return $this->email;
     }
@@ -52,9 +50,12 @@ class PaymentLink extends Payment
     /**
      * @param null $email
      */
-    public function setEmail($email): void
+    public function setEmail($email): PaymentLink
     {
         $this->email = $email;
+
+		return $this;
+
     }
 
 }

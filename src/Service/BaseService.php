@@ -8,6 +8,7 @@ use Oderopay\Http\HttpResponse;
 use Oderopay\OderoClient;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\HttpExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 class BaseService
 {
@@ -44,8 +45,8 @@ class BaseService
      * @param array $options
      * @return HttpResponse
      */
-    public function request(string $method = 'POST', string $uri = '', array $options = [])
-    {
+    public function request(string $method = 'POST', string $uri = '', array $options = []): HttpResponse
+	{
         $merchantSignatureHeader = $this->generateMerchantSignature(
             $options['form_params'] ?? [],
             $this->client->config->getMerchantId(),
@@ -77,6 +78,6 @@ class BaseService
             $response->code = $e->getCode();
         }
 
-        return $response;
+		return $response;
     }
 }

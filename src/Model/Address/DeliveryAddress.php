@@ -6,8 +6,8 @@ namespace Oderopay\Model\Address;
 class DeliveryAddress extends Address
 {
 
-    /** @var string */
-    protected $deliveryType;
+    /** @var ?string */
+    protected ?string $deliveryType;
 
     /**
      * @return string

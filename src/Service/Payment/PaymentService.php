@@ -16,8 +16,8 @@ class PaymentService extends BaseService
      * @param Payment $payment
      * @return PaymentIntentResponse
      */
-    public function create(Payment $payment)
-    {
+    public function create(Payment $payment): PaymentIntentResponse
+	{
         $payment->setMerchantId($this->client->config->getMerchantId());
 
         $total = array_reduce($payment->getProducts(), function($sum, $product){

@@ -6,13 +6,14 @@ namespace Oderopay\Http;
 
 use Symfony\Contracts\HttpClient\Exception\HttpExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 class HttpClient
 {
     /**
      * @var HttpClientInterface
      */
-    public $client;
+    public HttpClientInterface $client;
 
     public function __construct(HttpClientInterface $client)
     {
@@ -22,7 +23,7 @@ class HttpClient
     /**
 	 * @throws HttpExceptionInterface|\Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
 	 */
-    public function request($method = 'POST', $uri = '', $options = [])
+    public function request($method = 'POST', $uri = '', $options = []) : ResponseInterface
     {
         $options['json'] = $options['form_params'] ?? []; unset($options['form_params']);
 

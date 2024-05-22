@@ -24,16 +24,15 @@ class BasketItemSpec extends OderoModelSpec
             ->setQuantity(2)
         ;
 
-        $this->getTotal()->shouldReturn(200);
+        $this->getTotal()->shouldReturn((float) 200);
 
         $arrayOutput =  [
             "extId" => "123",
-            "price" => 100,
+            "price" => 100.0,
             "quantity" => 2,
-            "total" => 200,
             "name" => "Product 1",
         ];
 
-        $this->toArray()->shouldReturn($arrayOutput);
+		$this->toArray()->shouldReturn($arrayOutput);
     }
 }

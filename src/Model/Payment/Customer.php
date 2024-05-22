@@ -9,25 +9,25 @@ use Oderopay\Model\Address\DeliveryAddress;
 
 class Customer extends AbstractRequest
 {
-    /** @var string */
-    protected $email;
+    /** @var ?string */
+    protected ?string $email;
 
-    /** @var string */
-    protected $phoneNumber;
+    /** @var ?string */
+    protected ?string $phoneNumber;
 
-    /** @var DeliveryAddress */
-    protected $deliveryInformation;
+    /** @var ?DeliveryAddress */
+    protected ?DeliveryAddress $deliveryInformation;
 
-    /** @var BillingAddress */
-    protected $billingInformation;
+    /** @var ?BillingAddress */
+    protected ?BillingAddress $billingInformation;
 
-    /**
-     * @return string
-     */
-    public function getEmail(): string
-    {
-        return $this->email;
-    }
+	/**
+	 * @return string|null
+	 */
+	public function getEmail(): ?string
+	{
+		return $this->email;
+	}
 
     /**
      * @param string $email
@@ -39,13 +39,13 @@ class Customer extends AbstractRequest
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getPhoneNumber(): string
-    {
-        return $this->phoneNumber;
-    }
+	/**
+	 * @return string|null
+	 */
+	public function getPhoneNumber(): ?string
+	{
+		return $this->phoneNumber;
+	}
 
     /**
      * @param string $phoneNumber
@@ -57,13 +57,13 @@ class Customer extends AbstractRequest
         return $this;
     }
 
-    /**
-     * @return DeliveryAddress
-     */
-    public function getDeliveryInformation(): ?DeliveryAddress
-    {
-        return $this->deliveryInformation;
-    }
+	/**
+	 * @return DeliveryAddress|null
+	 */
+	public function getDeliveryInformation(): ?DeliveryAddress
+	{
+		return $this->deliveryInformation;
+	}
 
     /**
      * @param DeliveryAddress $deliveryInformation
@@ -75,13 +75,13 @@ class Customer extends AbstractRequest
         return $this;
     }
 
-    /**
-     * @return BillingAddress
-     */
-    public function getBillingInformation(): ?BillingAddress
-    {
-        return $this->billingInformation;
-    }
+	/**
+	 * @return BillingAddress|null
+	 */
+	public function getBillingInformation(): ?BillingAddress
+	{
+		return $this->billingInformation;
+	}
 
     /**
      * @param BillingAddress $billingInformation

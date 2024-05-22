@@ -7,112 +7,106 @@ use Oderopay\Model\AbstractRequest;
 
 class Merchant extends AbstractRequest
 {
-    /** @var string */
-    protected $extId;
+    /** @var ?string */
+    protected ?string$extId;
 
-    /** @var string */
-    protected $name;
+    /** @var ?string */
+    protected ?string $name;
 
-    /** @var float */
-    protected $amount;
+    /** @var ?float */
+    protected ?float $amount;
 
-    /** @var float */
-    protected $commission;
+    /** @var ?float */
+    protected ?float $commission;
 
     /** @var BasketItem[] */
-    protected $products = [];
+    protected array $products = [];
 
-    /**
-     * @return string
-     */
-    public function getExtId()
-    {
-        return $this->extId;
-    }
+	/**
+	 * @return string|null
+	 */
+	public function getExtId(): ?string
+	{
+		return $this->extId;
+	}
 
     /**
      * @param string $extId
      * @return Merchant
      */
-    public function setExtId($extId)
+    public function setExtId($extId) : Merchant
     {
         $this->extId = $extId;
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
+	/**
+	 * @return string|null
+	 */
+	public function getName(): ?string
+	{
+		return $this->name;
+	}
 
     /**
      * @param string $name
      * @return Merchant
      */
-    public function setName($name)
+    public function setName(string $name) : Merchant
     {
         $this->name = $name;
         return $this;
     }
 
-    /**
-     * @return float
-     */
-    public function getAmount()
-    {
-        if(!$this->amount){
-            foreach ($this->getProducts() as $product) {
-                $this->amount += $product->getTotal();
-            }
-        }
-
-        return $this->amount;
-    }
+	/**
+	 * @return float|null
+	 */
+	public function getAmount(): ?float
+	{
+		return $this->amount;
+	}
 
     /**
      * @param float $amount
      * @return Merchant
      */
-    public function setAmount($amount)
+    public function setAmount(float $amount): Merchant
     {
         $this->amount = $amount;
         return $this;
     }
 
-    /**
-     * @return float
-     */
-    public function getCommission()
-    {
-        return $this->commission;
-    }
+	/**
+	 * @return float|null
+	 */
+	public function getCommission(): ?float
+	{
+		return $this->commission;
+	}
 
     /**
      * @param float $commission
      * @return Merchant
      */
-    public function setCommission($commission)
+    public function setCommission(float $commission): Merchant
     {
         $this->commission = $commission;
         return $this;
     }
 
-    /**
-     * @return array<BasketItem>
-     */
-    public function getProducts()
-    {
-        return $this->products;
-    }
+	/**
+	 * @return array
+	 */
+	public function getProducts(): array
+	{
+		return $this->products;
+	}
 
     /**
-     * @param BasketItem $products
+     * @param BasketItem[] $products
      * @return Merchant
      */
-    public function setProducts($products)
+    public function setProducts(array $products) : Merchant
     {
         $this->products = $products;
 
@@ -123,15 +117,15 @@ class Merchant extends AbstractRequest
      * @param BasketItem $product
      * @return Merchant
      */
-    public function addProduct(BasketItem $product)
-    {
+    public function addProduct(BasketItem $product): Merchant
+	{
         $this->products[] = $product;
 
         return $this;
     }
 
-    public function removeProduct(BasketItem $product)
-    {
+    public function removeProduct(BasketItem $product): Merchant
+	{
         foreach ($this->products as $k => $_product) {
             if($_product->getExtId() === $product->getExtId()){
                 unset($this->products[$k]);
