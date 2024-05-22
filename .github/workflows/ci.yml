@@ -27,7 +27,7 @@ jobs:
         run: php -v
 
       - name: Composer Install
-        run: composer install --prefer-dist --no-cache
+        run: composer install --prefer-dist --ignore-platform-reqs --no-cache
 
       - name: PHP Spec
         uses: php-actions/phpspec@master
