@@ -13,7 +13,7 @@ class CardService extends BaseService
 
     /**
      * @param SaveCard $card
-     * @return \Oderopay\Http\Response\CardSaveResponse
+     * @return CardSaveResponse
      */
     public function create(SaveCard $card) : CardSaveResponse
     {

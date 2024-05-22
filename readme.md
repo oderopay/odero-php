@@ -7,7 +7,13 @@ It includes a pre-defined set of classes for API resources that initialize thems
 
 ### Requirements
 
-PHP 7.2.0 or later.
+Compatibility
+
+| Version | PHP                    |  
+|---------|------------------------| 
+| `v1.x`  | 7.2, 7.3, 7.4 and ^8.0 |  
+| `v2.x`  | ^8.1                   |   
+
 
 ### Installation
 
@@ -20,6 +26,12 @@ To use the bindings, use Composer's autoload:
 
 ````bash 
 require_once('vendor/autoload.php');
+````
+
+### Testing
+To run the tests
+````bash 
+./vendor/bin/phpspec run
 ````
 
 ## Dependencies

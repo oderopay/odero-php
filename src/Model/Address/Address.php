@@ -10,15 +10,15 @@ class Address extends AbstractRequest
 
     /**
      * Alpha-3 code
-     * @var string
+     * @var ?string
      */
-    protected $country;
+    protected ?string $country;
 
-    /** @var string */
-    protected $city;
+    /** @var ?string */
+    protected ?string $city;
 
-    /** @var string */
-    protected $address;
+    /** @var ?string */
+    protected ?string $address;
 
     /**
      * @return string

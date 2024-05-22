@@ -7,140 +7,135 @@ use Oderopay\Model\AbstractRequest;
 
 class BasketItem extends AbstractRequest
 {
-    /** @var string */
-    protected $extId;
+    /** @var ?string */
+    protected ?string $extId;
 
-    /** @var float */
-    protected $price;
+    /** @var ?float */
+    protected ?float $price;
 
-    /** @var float */
-    protected $quantity;
+    /** @var ?int */
+    protected ?int $quantity = 1;
 
-    /** @var float */
-    protected $total;
+    /** @var ?float */
+    protected ?float $total;
 
-    /** @var string */
-    protected $name;
+    /** @var ?string */
+    protected ?string $name;
 
-    /** @var string */
-    protected $imageUrl;
+    /** @var ?string */
+    protected ?string $imageUrl;
 
-    /**
-     * @return string
-     */
-    public function getExtId()
-    {
-        return $this->extId;
-    }
+	/**
+	 * @return string|null
+	 */
+	public function getExtId(): ?string
+	{
+		return $this->extId;
+	}
 
-    /**
-     * @param string $extId
-     * @return BasketItem
-     */
-    public function setExtId($extId)
-    {
-        $this->extId = $extId;
-        return $this;
-    }
+	/**
+	 * @param string|null $extId
+	 * @return BasketItem
+	 */
+	public function setExtId(?string $extId): BasketItem
+	{
+		$this->extId = $extId;
 
-    /**
-     * @return float
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
+		return $this;
+	}
 
-    /**
-     * @param float $price
-     * @return BasketItem
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
+	/**
+	 * @return float|null
+	 */
+	public function getPrice(): ?float
+	{
+		return $this->price;
+	}
 
-        if(!$this->total && $this->quantity){
-            $this->total = $this->quantity * $price;
-        }
+	/**
+	 * @param float|null $price
+	 * @return BasketItem
+	 */
+	public function setPrice(?float $price): BasketItem
+	{
+		$this->price = $price;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * @return float
-     */
-    public function getQuantity()
-    {
-        return $this->quantity;
-    }
+	/**
+	 * @return int|null
+	 */
+	public function getQuantity(): ?int
+	{
+		return $this->quantity;
+	}
 
-    /**
-     * @param float $quantity
-     * @return BasketItem
-     */
-    public function setQuantity($quantity)
-    {
-        $this->quantity = $quantity;
+	/**
+	 * @param int|null $quantity
+	 * @return BasketItem
+	 */
+	public function setQuantity(?int $quantity): BasketItem
+	{
+		$this->quantity = $quantity;
 
-        if(!$this->total && $this->price){
-            $this->total = $this->price * $quantity;
-        }
+		return $this;
+	}
 
-        return $this;
-    }
+	/**
+	 * @return float|null
+	 */
+	public function getTotal(): ?float
+	{
+		return $this->price * $this->quantity;
+	}
 
-    /**
-     * @return float
-     */
-    public function getTotal()
-    {
-        return $this->total ?? $this->price * $this->quantity;
-    }
+	/**
+	 * @param float|null $total
+	 * @return BasketItem
+	 */
+	public function setTotal(?float $total): BasketItem
+	{
+		$this->total = $total;
 
-    /**
-     * @param float $total
-     * @return BasketItem
-     */
-    public function setTotal($total)
-    {
-        $this->total = $total;
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
+	/**
+	 * @return string|null
+	 */
+	public function getName(): ?string
+	{
+		return $this->name;
+	}
 
-    /**
-     * @param string $name
-     * @return BasketItem
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-        return $this;
-    }
+	/**
+	 * @param string|null $name
+	 * @return BasketItem
+	 */
+	public function setName(?string $name): BasketItem
+	{
+		$this->name = $name;
 
-    /**
-     * @return string
-     */
-    public function getImageUrl()
-    {
-        return $this->imageUrl;
-    }
+		return $this;
+	}
 
-    /**
-     * @param string $imageUrl
-     * @return BasketItem
-     */
-    public function setImageUrl($imageUrl)
-    {
-        $this->imageUrl = base64_encode($imageUrl);
-        return $this;
-    }
+	/**
+	 * @return string|null
+	 */
+	public function getImageUrl(): ?string
+	{
+		return $this->imageUrl;
+	}
 
+	/**
+	 * @param string|null $imageUrl
+	 * @return BasketItem
+	 */
+	public function setImageUrl(?string $imageUrl): BasketItem
+	{
+		$this->imageUrl = $imageUrl;
+
+		return $this;
+	}
 }

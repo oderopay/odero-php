@@ -7,8 +7,8 @@ use Oderopay\Model\Payment\Payment;
 
 class SubscriptionService extends PaymentService
 {
-    public function create(Payment $payment)
-    {
+    public function create(Payment $payment): \Oderopay\Http\Response\PaymentIntentResponse
+	{
         $payment->setRecurring(true);
 
         //check subscription

@@ -13,17 +13,17 @@ class Subscription extends AbstractRequest
         'Weekly', 'Monthly', 'Yearly'
     ];
 
-    /** @var string */
-    protected $startDate;
+    /** @var ?string */
+    protected ?string $startDate;
 
-    /** @var string */
-    protected $endDate;
+    /** @var ?string */
+    protected ?string $endDate;
 
-    /** @var string */
-    protected $timeForBillingUtc = '00:00';
+    /** @var ?string */
+    protected ?string $timeForBillingUtc = '00:00';
 
-    /** @var string */
-    protected $interval;
+    /** @var ?string */
+    protected ?string $interval;
 
     /**
      * @return string
@@ -129,7 +129,7 @@ class Subscription extends AbstractRequest
      * Sets the interval as weekly
      * @return $this
      */
-    public function weekly()
+    public function weekly(): Subscription
     {
         $this->setInterval('Weekly');
 
@@ -139,7 +139,7 @@ class Subscription extends AbstractRequest
     /**
      * @return $this
      */
-    public function monthly()
+    public function monthly(): Subscription
     {
         $this->setInterval('Monthly');
 
@@ -149,7 +149,7 @@ class Subscription extends AbstractRequest
     /**
      * @return $this
      */
-    public function yearly()
+    public function yearly(): Subscription
     {
         $this->setInterval('Yearly');
 

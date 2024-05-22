@@ -8,107 +8,104 @@ use Oderopay\Model\Subscription\Subscription;
 
 class Payment extends AbstractRequest
 {
-    /** @var string */
-    protected $merchantId;
+    /** @var ?string */
+    protected ?string $merchantId;
 
     /** @var null|string */
-    protected $cardToken = null;
+    protected ?string $cardToken = null;
 
-    /** @var float */
-    protected $amount;
+    /** @var ?float */
+    protected ?float $amount = 0;
 
-    /** @var string */
-    protected $currency;
+    /** @var ?string */
+    protected ?string$currency;
 
-    /** @var string */
-    protected $extOrderId;
+    /** @var ?string */
+    protected ?string $extOrderId;
 
-    /** @var string */
-    protected $extOrderUrl;
+    /** @var ?string */
+    protected ?string $extOrderUrl;
 
-    /** @var string */
-    protected $returnUrl;
+    /** @var ?string */
+    protected ?string $returnUrl;
 
     /** @var bool */
-    protected $saveCard;
+    protected bool $saveCard = false;
 
     /** @var array<Merchant> */
-    protected $submerchants = [];
+    protected array $submerchants = [];
 
-    /** @var Customer */
-    protected $customer;
+    /** @var ?Customer */
+    protected ?Customer $customer;
 
     /** @var array<BasketItem> */
-    protected $products;
+    protected array $products = [];
 
     /** @var bool  */
-    protected $recurring = false;
+    protected bool $recurring = false;
 
     /** @var null|Subscription */
-    protected $recurringInformation = null;
+    protected ?Subscription $recurringInformation = null;
 
-    /** @var string */
-    protected $successUrl = null;
+    /** @var ?string */
+    protected ?string $successUrl = null;
 
-    /** @var string */
-    protected $failUrl = null;
+    /** @var ?string */
+    protected ?string $failUrl = null;
 
     /** @var bool  */
-    protected $extOrderIsInstalment = false;
+    protected bool $extOrderIsInstalment = false;
 
     /** @var string  */
-    protected $extOrderInstalmentBank = 'bt';
+    protected string $extOrderInstalmentBank = 'bt';
 
     /** @var array  */
-    protected $extOrderInstalmentPayments = [];
+    protected array $extOrderInstalmentPayments = [];
 
     public function __construct()
     {
         $this->submerchants = [];
     }
-    /**
-     * @return array<BasketItem>
-     */
-    public function getProducts(): array
-    {
-        return $this->products ?? [];
-    }
 
-    /**
-     * @param BasketItem[] $products
-     * @return Payment
-     */
-    public function setProducts(array $products): Payment
-    {
-        $this->products = $products;
-        return $this;
-    }
+	/**
+	 * @return string|null
+	 */
+	public function getMerchantId(): ?string
+	{
+		return $this->merchantId;
+	}
 
-    /**
-     * @return string
-     */
-    public function getMerchantId(): string
-    {
-        return $this->merchantId;
-    }
+	/**
+	 * @param string|null $merchantId
+	 */
+	public function setMerchantId(?string $merchantId): void
+	{
+		$this->merchantId = $merchantId;
+	}
 
-    /**
-     * @param string $merchantId
-     * @return Payment
-     */
-    public function setMerchantId(string $merchantId): Payment
-    {
-        $this->merchantId = $merchantId;
-        return $this;
-    }
+	/**
+	 * @return string|null
+	 */
+	public function getCardToken(): ?string
+	{
+		return $this->cardToken;
+	}
 
-    /**
-     * @return float
-     */
-    public function getAmount(): ?float
-    {
-        return $this->amount;
-    }
+	/**
+	 * @param string|null $cardToken
+	 */
+	public function setCardToken(?string $cardToken): void
+	{
+		$this->cardToken = $cardToken;
+	}
+
+	/**
+	 * @return float|null
+	 */
+	public function getAmount(): ?float
+	{
+		return $this->amount;
+	}
 
     /**
      * @param float $amount
@@ -120,13 +117,13 @@ class Payment extends AbstractRequest
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getCurrency(): string
-    {
-        return $this->currency;
-    }
+	/**
+	 * @return string|null
+	 */
+	public function getCurrency(): ?string
+	{
+		return $this->currency;
+	}
 
     /**
      * @param string $currency
@@ -138,13 +135,13 @@ class Payment extends AbstractRequest
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getExtOrderId(): string
-    {
-        return $this->extOrderId;
-    }
+	/**
+	 * @return string|null
+	 */
+	public function getExtOrderId(): ?string
+	{
+		return $this->extOrderId;
+	}
 
     /**
      * @param string $extOrderId
@@ -156,49 +153,53 @@ class Payment extends AbstractRequest
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getExtOrderUrl(): string
-    {
-        return $this->extOrderUrl;
-    }
+	/**
+	 * @return string|null
+	 */
+	public function getExtOrderUrl(): ?string
+	{
+		return $this->extOrderUrl;
+	}
 
-    /**
-     * @param string $extOrderUrl
-     * @return Payment
-     */
-    public function setExtOrderUrl(string $extOrderUrl): Payment
-    {
-        $this->extOrderUrl = base64_encode($extOrderUrl);
-        return $this;
-    }
+	/**
+	 * @param string|null $extOrderUrl
+	 * @return Payment
+	 */
+	public function setExtOrderUrl(?string $extOrderUrl): Payment
+	{
+		$this->extOrderUrl = $extOrderUrl;
 
-    /**
-     * @return string
-     */
-    public function getReturnUrl(): string
-    {
-        return $this->returnUrl;
-    }
+		return $this;
 
-    /**
-     * @param string $returnUrl
-     * @return Payment
-     */
-    public function setReturnUrl(string $returnUrl): Payment
-    {
-        $this->returnUrl = base64_encode($returnUrl);
-        return $this;
-    }
+	}
 
-    /**
-     * @return bool
-     */
-    public function isSaveCard(): bool
-    {
-        return $this->saveCard;
-    }
+	/**
+	 * @return string|null
+	 */
+	public function getReturnUrl(): ?string
+	{
+		return $this->returnUrl;
+	}
+
+	/**
+	 * @param string|null $returnUrl
+	 * @return Payment
+	 */
+	public function setReturnUrl(?string $returnUrl): Payment
+	{
+		$this->returnUrl = $returnUrl;
+
+		return $this;
+
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isSaveCard(): bool
+	{
+		return $this->saveCard;
+	}
 
     /**
      * @param bool $saveCard
@@ -210,183 +211,161 @@ class Payment extends AbstractRequest
         return $this;
     }
 
-    /**
-     * @return array<Merchant>
-     */
-    public function getSubMerchants() : ?array
-    {
-        return $this->submerchants;
-    }
+	/**
+	 * @return array
+	 */
+	public function getSubmerchants(): array
+	{
+		return $this->submerchants;
+	}
 
-    /**
-     * @param Merchant[] $subMerchants
-     * @return Payment
-     */
-    public function setSubMerchants(array $subMerchants): Payment
-    {
-        $this->submerchants = $subMerchants;
-        return $this;
-    }
+	/**
+	 * @param array $submerchants
+	 * @return Payment
+	 */
+	public function setSubmerchants(array $submerchants): Payment
+	{
+		$this->submerchants = $submerchants;
 
-    /**
-     * @return Customer
-     */
-    public function getCustomer(): ?Customer
-    {
-        return $this->customer;
-    }
+		return $this;
 
-    /**
-     * @param Customer $customer
-     * @return Payment
-     */
-    public function setCustomer(Customer $customer): Payment
-    {
-        $this->customer = $customer;
-        return $this;
-    }
+	}
 
-    /**
-     * @return bool
-     */
-    public function isRecurring(): bool
-    {
-        $this->recurring = $this->getSubscription() instanceof Subscription;
+	/**
+	 * @return Customer|null
+	 */
+	public function getCustomer(): ?Customer
+	{
+		return $this->customer;
+	}
 
-        return $this->recurring;
-    }
+	/**
+	 * @param Customer|null $customer
+	 * @return Payment
+	 */
+	public function setCustomer(?Customer $customer): Payment
+	{
+		$this->customer = $customer;
 
+		return $this;
 
-    /**
-     * @return Subscription|null
-     */
-    public function getSubscription(): ?Subscription
-    {
-        return $this->recurringInformation;
-    }
+	}
 
-    /**
-     * @param Subscription $subscription
-     * @return Payment
-     */
-    public function setSubscription(Subscription $subscription): Payment
-    {
-        $this->recurringInformation = $subscription;
+	/**
+	 * @return array
+	 */
+	public function getProducts(): array
+	{
+		return $this->products;
+	}
 
-        return $this;
-    }
+	/**
+	 * @param array $products
+	 * @return Payment
+	 */
+	public function setProducts(array $products): Payment
+	{
+		$this->products = $products;
 
-    /**
-     * @return string|null
-     */
-    public function getCardToken(): ?string
-    {
-        return $this->cardToken;
-    }
+		return $this;
 
-    /**
-     * @param string|null $cardToken
-     * @return Payment
-     */
-    public function setCardToken(?string $cardToken): Payment
-    {
-        $this->cardToken = $cardToken;
-        return $this;
-    }
+	}
 
-    /**
-     * @param bool $recurring
-     * @return Payment
-     */
-    public function setRecurring(bool $recurring): Payment
-    {
-        $this->recurring = $recurring;
-        return $this;
-    }
+	/**
+	 * @return bool
+	 */
+	public function isSubscription(): bool
+	{
+		return $this->recurring;
+	}
 
-    /**
-     * @return string
-     */
-    public function getSuccessUrl(): ?string
-    {
-        return $this->successUrl;
-    }
+	/**
+	 * @param bool $recurring
+	 */
+	public function setRecurring(bool $recurring): void
+	{
+		$this->recurring = $recurring;
+	}
 
-    /**
-     * @param string $successUrl
-     */
-    public function setSuccessUrl(?string $successUrl)
-    {
-        if(is_null($successUrl)){
-            $this->successUrl = $this->getReturnUrl();
-        }else{
-            $this->successUrl =  base64_encode($successUrl);
-        }
+	/**
+	 * @return Subscription|null
+	 */
+	public function getSubscription(): ?Subscription
+	{
+		return $this->recurringInformation;
+	}
 
-        return $this;
-    }
+	/**
+	 * @param Subscription|null $recurringInformation
+	 */
+	public function setRecurringInformation(?Subscription $recurringInformation): void
+	{
+		$this->recurringInformation = $recurringInformation;
+	}
 
-    /**
-     * @return string
-     */
-    public function getFailUrl(): ?string
-    {
-        return $this->failUrl;
-    }
+	/**
+	 * @return string|null
+	 */
+	public function getSuccessUrl(): ?string
+	{
+		return $this->successUrl;
+	}
 
-    /**
-     * @param string $failUrl
-     */
-    public function setFailUrl(?string $failUrl)
-    {
-        if(is_null($failUrl)){
-            $this->failUrl = $this->getReturnUrl();
-        }else{
-            $this->failUrl =  base64_encode($failUrl);
-        }
+	/**
+	 * @param string|null $successUrl
+	 */
+	public function setSuccessUrl(?string $successUrl): void
+	{
+		$this->successUrl = $successUrl;
+	}
 
-        return $this;
-    }
+	/**
+	 * @return string|null
+	 */
+	public function getFailUrl(): ?string
+	{
+		return $this->failUrl;
+	}
 
-    /**
-     * @return bool
-     */
-    public function isExtOrderIsInstalment(): bool
-    {
-        return $this->extOrderIsInstalment;
-    }
+	/**
+	 * @param string|null $failUrl
+	 */
+	public function setFailUrl(?string $failUrl): void
+	{
+		$this->failUrl = $failUrl;
+	}
 
-    /**
-     * @param bool $extOrderIsInstalment
-     */
-    public function setExtOrderIsInstalment(bool $extOrderIsInstalment): void
-    {
-        $this->extOrderIsInstalment = $extOrderIsInstalment;
-    }
+	/**
+	 * @return bool
+	 */
+	public function isExtOrderIsInstalment(): bool
+	{
+		return $this->extOrderIsInstalment;
+	}
 
-    /**
-     * @return string
-     */
-    public function getExtOrderInstalmentBank(): string
-    {
-        return $this->extOrderInstalmentBank;
-    }
+	/**
+	 * @param bool $extOrderIsInstalment
+	 */
+	public function setExtOrderIsInstalment(bool $extOrderIsInstalment): void
+	{
+		$this->extOrderIsInstalment = $extOrderIsInstalment;
+	}
 
-    /**
-     * @param string $extOrderInstalmentBank
-     */
-    public function setExtOrderInstalmentBank(string $extOrderInstalmentBank): void
-    {
-        $this->extOrderInstalmentBank = $extOrderInstalmentBank;
-    }
+	/**
+	 * @return string
+	 */
+	public function getExtOrderInstalmentBank(): string
+	{
+		return $this->extOrderInstalmentBank;
+	}
 
-    /**
-     * @return array
-     */
-    public function getExtOrderInstalmentPayments(): array
-    {
-        return $this->extOrderInstalmentPayments;
-    }
+	/**
+	 * @param string $extOrderInstalmentBank
+	 */
+	public function setExtOrderInstalmentBank(string $extOrderInstalmentBank): void
+	{
+		$this->extOrderInstalmentBank = $extOrderInstalmentBank;
+	}
 
     /**
      * @return Payment

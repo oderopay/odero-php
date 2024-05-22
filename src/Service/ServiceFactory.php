@@ -19,15 +19,15 @@ class ServiceFactory extends AbstractServiceFactory
     /**
      * @var array<string, string>
      */
-    private static $classMap = [
+    private static array $classMap = [
         'payments' => PaymentService::class,
         'cards' => CardService::class,
         'subscriptions' => SubscriptionService::class,
         'webhooks' => WebhookService::class
     ];
 
-    public function getServiceClass($name)
-    {
+    public function getServiceClass($name): ?string
+	{
         return \array_key_exists($name, self::$classMap) ? self::$classMap[$name] : null;
     }
 }

@@ -5,14 +5,15 @@ namespace Oderopay\Service;
 
 use Oderopay\Http\HttpClient;
 use Oderopay\OderoClientInterface;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 abstract class AbstractServiceFactory
 {
     /** @var OderoClientInterface */
-    private $client;
+    private OderoClientInterface $client;
 
     /** @var array<string, AbstractServiceFactory> */
-    private $services;
+    private array $services;
 
     /**
      * @param OderoClientInterface $client
@@ -25,12 +26,12 @@ abstract class AbstractServiceFactory
 
     abstract protected function getServiceClass($name);
 
-    public function getClient()
-    {
+    public function getClient(): OderoClientInterface
+	{
         return $this->client;
     }
 
-	public function makeHttpClient()
+	public function makeHttpClient(): HttpClientInterface
 	{
 
 		$client = \Symfony\Component\HttpClient\HttpClient::create();

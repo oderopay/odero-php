@@ -2,7 +2,6 @@
 
 namespace Oderopay\Service\Webhook;
 
-use Oderopay\Model\Webhook\Payment;
 use Oderopay\Model\Webhook\BaseWebhook;
 use Oderopay\Service\BaseService;
 

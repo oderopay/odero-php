@@ -32,8 +32,8 @@ class MerchantSpec extends OderoModelSpec
         $firstProduct = $this->getProducts()[0];
 
         $firstProduct->getQuantity()->shouldReturn(2);
-        $firstProduct->getPrice()->shouldReturn(100);
-        $firstProduct->getTotal()->shouldReturn(200);
+        $firstProduct->getPrice()->shouldReturn(100.0);
+        $firstProduct->getTotal()->shouldReturn(200.0);
 
     }
 }
