@@ -8,7 +8,6 @@ use Oderopay\Http\HttpResponse;
 use Oderopay\OderoClient;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\HttpExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 class BaseService
 {

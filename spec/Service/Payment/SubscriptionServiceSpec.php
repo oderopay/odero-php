@@ -19,7 +19,7 @@ class SubscriptionServiceSpec extends ObjectBehavior
         $config = new OderoConfig('MY Store Name', 'merchantId', 'token');
         $oderoClient = new OderoClient($config);
 
-		$client = new MockHttpClient();
+		@$client = new MockHttpClient();
 		$http = new HttpClient($client);
 
 
