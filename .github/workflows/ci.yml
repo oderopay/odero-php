@@ -30,6 +30,4 @@ jobs:
         run: composer install --prefer-dist --ignore-platform-reqs --no-cache
 
       - name: PHP Spec
-        uses: php-actions/phpspec@master
-        with:
-          config: phpspec.yml
+        run: bin/phpspec run --format=dot
