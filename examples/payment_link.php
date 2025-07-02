@@ -5,7 +5,8 @@ $paymentRequest = new \Oderopay\Model\Payment\PaymentLink();
 $paymentRequest
     ->setItemDescription('Sample Product')
     ->setCurrency('RON')
-    ->setAmount(5.20)
+    ->setAmount(0.2)
+	->setDescription('payment description')
     ->setExpireAt((new DateTime())->add(new DateInterval("P1Y")))
 ;
 
