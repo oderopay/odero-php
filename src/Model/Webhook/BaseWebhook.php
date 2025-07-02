@@ -33,9 +33,11 @@ class BaseWebhook extends AbstractRequest
     /**
      * @param string $type
      */
-    public function setType(string $type): void
+    public function setType(string $type): BaseWebhook
     {
         $this->type = $type;
+
+	    return $this;
     }
 
     /**
@@ -49,9 +51,10 @@ class BaseWebhook extends AbstractRequest
     /**
      * @param string $operationId
      */
-    public function setOperationId(string $operationId): void
+    public function setOperationId(string $operationId): BaseWebhook
     {
         $this->operationId = $operationId;
+	    return $this;
     }
 
     /**
@@ -65,9 +68,11 @@ class BaseWebhook extends AbstractRequest
     /**
      * @param string $status
      */
-    public function setStatus(string $status): void
+    public function setStatus(string $status): BaseWebhook
     {
         $this->status = $status;
+
+		return $this;
     }
 
     /**
@@ -81,9 +86,11 @@ class BaseWebhook extends AbstractRequest
     /**
      * @param string $message
      */
-    public function setMessage(string $message): void
+    public function setMessage(string $message): BaseWebhook
     {
         $this->message = $message;
+
+		return $this;
     }
 
     /**
@@ -97,9 +104,11 @@ class BaseWebhook extends AbstractRequest
     /**
      * @param array $data
      */
-    public function setData(array $data): void
+    public function setData(array $data): BaseWebhook
     {
         $this->data = $data;
+
+	    return $this;
     }
 
 }

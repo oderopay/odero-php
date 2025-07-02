@@ -288,9 +288,11 @@ class Payment extends AbstractRequest
 	/**
 	 * @param bool $recurring
 	 */
-	public function setRecurring(bool $recurring): void
+	public function setRecurring(bool $recurring): Payment
 	{
 		$this->recurring = $recurring;
+
+		return $this;
 	}
 
 	/**
@@ -304,9 +306,11 @@ class Payment extends AbstractRequest
 	/**
 	 * @param Subscription|null $recurringInformation
 	 */
-	public function setRecurringInformation(?Subscription $recurringInformation): void
+	public function setRecurringInformation(?Subscription $recurringInformation): Payment
 	{
 		$this->recurringInformation = $recurringInformation;
+
+		return $this;
 	}
 
 	/**
@@ -377,9 +381,11 @@ class Payment extends AbstractRequest
 	/**
 	 * @param string $extOrderInstalmentBank
 	 */
-	public function setExtOrderInstalmentBank(string $extOrderInstalmentBank): void
+	public function setExtOrderInstalmentBank(string $extOrderInstalmentBank): Payment
 	{
 		$this->extOrderInstalmentBank = $extOrderInstalmentBank;
+
+		return $this;
 	}
 
     /**

@@ -28,9 +28,11 @@ class SaveCard extends AbstractRequest
 	/**
 	 * @param string|null $merchantId
 	 */
-	public function setMerchantId(?string $merchantId): void
+	public function setMerchantId(?string $merchantId): SaveCard
 	{
 		$this->merchantId = $merchantId;
+
+		return $this;
 	}
 
 	/**
@@ -44,9 +46,11 @@ class SaveCard extends AbstractRequest
 	/**
 	 * @param string|null $returnUrl
 	 */
-	public function setReturnUrl(?string $returnUrl): void
+	public function setReturnUrl(?string $returnUrl): SaveCard
 	{
 		$this->returnUrl = $returnUrl;
+
+		return $this;
 	}
 
 	/**
@@ -60,9 +64,11 @@ class SaveCard extends AbstractRequest
 	/**
 	 * @param string|null $currency
 	 */
-	public function setCurrency(?string $currency): void
+	public function setCurrency(?string $currency): SaveCard
 	{
 		$this->currency = $currency;
+
+		return $this;
 	}
 
 	/**
@@ -76,8 +82,10 @@ class SaveCard extends AbstractRequest
 	/**
 	 * @param Customer|null $customer
 	 */
-	public function setCustomer(?Customer $customer): void
+	public function setCustomer(?Customer $customer): SaveCard
 	{
 		$this->customer = $customer;
+
+		return $this;
 	}
 }
