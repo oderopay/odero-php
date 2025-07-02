@@ -134,6 +134,10 @@ class BasketItem extends AbstractRequest
 	 */
 	public function setImageUrl(?string $imageUrl): BasketItem
 	{
+		if(str_starts_with($imageUrl, 'http')){
+			$imageUrl = base64_encode($imageUrl);
+		}
+
 		$this->imageUrl = $imageUrl;
 
 		return $this;

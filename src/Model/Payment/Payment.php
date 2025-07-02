@@ -173,6 +173,10 @@ class Payment extends AbstractRequest
 	 */
 	public function setExtOrderUrl(?string $extOrderUrl): Payment
 	{
+		if(str_starts_with($extOrderUrl, 'http')){
+			$extOrderUrl = base64_encode($extOrderUrl);
+		}
+
 		$this->extOrderUrl = $extOrderUrl;
 
 		return $this;
@@ -193,6 +197,10 @@ class Payment extends AbstractRequest
 	 */
 	public function setReturnUrl(?string $returnUrl): Payment
 	{
+		if(str_starts_with($returnUrl, 'http')){
+			$returnUrl = base64_encode($returnUrl);
+		}
+
 		$this->returnUrl = $returnUrl;
 
 		return $this;
@@ -327,6 +335,10 @@ class Payment extends AbstractRequest
 	 */
 	public function setSuccessUrl(?string $successUrl): Payment
 	{
+		if(str_starts_with($successUrl, 'http')){
+			$successUrl = base64_encode($successUrl);
+		}
+
 		$this->successUrl = $successUrl;
 
 		return $this;
@@ -346,6 +358,10 @@ class Payment extends AbstractRequest
 	 */
 	public function setFailUrl(?string $failUrl): Payment
 	{
+		if(str_starts_with($failUrl, 'http')){
+			$failUrl = base64_encode($failUrl);
+		}
+
 		$this->failUrl = $failUrl;
 
 		return $this;

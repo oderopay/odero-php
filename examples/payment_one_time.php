@@ -28,6 +28,7 @@ $product1
     ->setImageUrl('https://site.com/image/product1.jpg')
     ->setName('Product Name')
     ->setPrice(3)
+	->setTotal(3)
     ->setQuantity(1);
 
 $products[] = $product1;
