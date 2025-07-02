@@ -80,9 +80,11 @@ class Payment extends AbstractRequest
 	/**
 	 * @param string|null $merchantId
 	 */
-	public function setMerchantId(?string $merchantId): void
+	public function setMerchantId(?string $merchantId): Payment
 	{
 		$this->merchantId = $merchantId;
+
+		return $this;
 	}
 
 	/**
@@ -96,9 +98,11 @@ class Payment extends AbstractRequest
 	/**
 	 * @param string|null $cardToken
 	 */
-	public function setCardToken(?string $cardToken): void
+	public function setCardToken(?string $cardToken): Payment
 	{
 		$this->cardToken = $cardToken;
+
+		return $this;
 	}
 
 	/**
@@ -315,10 +319,13 @@ class Payment extends AbstractRequest
 
 	/**
 	 * @param string|null $successUrl
+	 * @return Payment
 	 */
-	public function setSuccessUrl(?string $successUrl): void
+	public function setSuccessUrl(?string $successUrl): Payment
 	{
 		$this->successUrl = $successUrl;
+
+		return $this;
 	}
 
 	/**
@@ -331,10 +338,13 @@ class Payment extends AbstractRequest
 
 	/**
 	 * @param string|null $failUrl
+	 * @return Payment
 	 */
-	public function setFailUrl(?string $failUrl): void
+	public function setFailUrl(?string $failUrl): Payment
 	{
 		$this->failUrl = $failUrl;
+
+		return $this;
 	}
 
 	/**
@@ -347,10 +357,13 @@ class Payment extends AbstractRequest
 
 	/**
 	 * @param bool $extOrderIsInstalment
+	 * @return Payment
 	 */
-	public function setExtOrderIsInstalment(bool $extOrderIsInstalment): void
+	public function setExtOrderIsInstalment(bool $extOrderIsInstalment): Payment
 	{
 		$this->extOrderIsInstalment = $extOrderIsInstalment;
+
+		return $this;
 	}
 
 	/**
