@@ -19,7 +19,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
  */
 class OderoClient implements OderoClientInterface
 {
-    const VERSION = '1.0.0';
+    const VERSION = '2.0.1';
 
     const APP_DIR = __DIR__ .'/../';
 

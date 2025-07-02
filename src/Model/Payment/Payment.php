@@ -62,6 +62,8 @@ class Payment extends AbstractRequest
     /** @var array  */
     protected array $extOrderInstalmentPayments = [];
 
+	protected $description = null;
+
     public function __construct()
     {
         $this->submerchants = [];
@@ -382,6 +384,24 @@ class Payment extends AbstractRequest
 
         return $this;
     }
+
+	/**
+	 * @return null
+	 */
+	public function getDescription()
+	{
+		return $this->description;
+	}
+
+	/**
+	 * @param null $description
+	 */
+	public function setDescription($description): self
+	{
+		$this->description = $description;
+
+		return $this;
+	}
 
 }
 
